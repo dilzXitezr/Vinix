@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZ MAPS V6 9HD SUKABUMI - FINAL</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#070510;color:#fff}
+header{position:sticky;top:0;z-index:999;background:linear-gradient(90deg,#1a0f3a,#3a1f6b);padding:12px;text-align:center;color:#ffd700;font-weight:800}
+#map{height:46vh;width:94%;margin:12px auto;border-radius:18px;border:2px solid #ffd70055}
+.card{background:linear-gradient(180deg,#1c1542,#16102f);margin:12px;border-radius:18px;padding:14px;border:1px solid #ffffff11}
+.btn-gold{background:linear-gradient(90deg,#ffd700,#ffae00);color:#000;border:none;padding:12px 16px;border-radius:12px;font-weight:800;width:100%}
+.quick{display:flex;gap:8px;overflow:auto;padding:8px 12px}
+.quick button{white-space:nowrap;background:#20164a;border:1px solid #ffd70044;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px}
+.wa-btn{display:block;background:#25D366;color:#000;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;margin:8px 0;text-align:center}
+.channel-btn{display:block;background:linear-gradient(90deg,#fff,#ffeaa7);color:#000;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;margin:8px 0;text-align:center;border:2px solid #ffd700}
+</style>
+</head>
+<body>
+<header>🌍 DILZ MAPS V6 • 9HD • SUKABUMI • BY DILZNOELZ</header>
+<div id="map"></div>
+<div class="quick">
+<button onclick="document.getElementById('sec-bmkg').scrollIntoView({behavior:'smooth'})">☁️ CUACA/BMKG</button>
+<button onclick="document.getElementById('sec-hp').scrollIntoView({behavior:'smooth'})">🔋 INFO HP</button>
+<button onclick="document.getElementById('sec-tools').scrollIntoView({behavior:'smooth'})">🛠️ TOOLS HD</button>
+<button onclick="document.getElementById('sec-profil').scrollIntoView({behavior:'smooth'})">👑 PROFIL</button>
+</div>
+<div class="card">
+<button class="btn-gold" onclick="shareLoc()">🔗 Share Lokasi Live ke WA</button>
+<p id="locText">Aktifkan GPS - Sukabumi</p>
+<p id="coords" style="color:#ffd700"></p>
+</div>
+<div class="card" id="sec-bmkg">
+<h3 style="color:#ffd700">🌦️ CUACA + 🌋 BMKG</h3>
+<span id="cuacaText">Sukabumi...</span>
+<div id="bmkgBox" style="background:#0005;padding:8px;border-radius:10px;margin-top:8px">Loading BMKG...</div>
+</div>
+<div class="card" id="sec-hp">
+<h3 style="color:#ffd700">🔋 STATUS HP</h3>
+<p>Baterai: <span id="batt">...</span></p><p>Waktu: <span id="time"></span></p>
+</div>
+<div class="card" id="sec-tools">
+<h3 style="color:#ffd700">🛠️ TOOLS HD 9HD</h3>
+<p>✅ SSTikTok ✅ Foto HD ✅ Video HD ✅ Light Motion ✅ CapCut</p>
+</div>
+<div class="card" id="sec-profil" style="text-align:center">
+<img src="https://ui-avatars.com/api/?name=DILZNOELZ&background=ffd700&color=000" style="width:90px;border-radius:50%;border:3px solid #ffd700">
+<h2 style="color:#ffd700">DILZNOELZ</h2>
+<p>Owner DILZ MAPS V6 9HD - Sukabumi</p>
+<a href="https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P" class="channel-btn">💬 JOIN SALURAN WA DILZNOELZ</a>
+<a href="https://wa.me/6285720945347?text=Halo%20Min%20DILZ%20dari%20DILZ%20MAPS%20V6" class="wa-btn">📱 CHAT WA 085720945347</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+let map=L.map('map').setView([-6.9175,106.927],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+let marker=L.marker([-6.9175,106.927]).addTo(map).bindPopup("DILZ MAPS V6 Sukabumi");
+navigator.geolocation.watchPosition(p=>{
+let lat=p.coords.latitude,lng=p.coords.longitude;
+map.setView([lat,lng],16);marker.setLatLng([lat,lng]);
+document.getElementById('locText').innerText="✅ Live Aktif";document.getElementById('coords').innerText=lat.toFixed(5)+","+lng.toFixed(5);
+});
+function shareLoc(){window.open("https://wa.me/?text="+encodeURIComponent("Lokasi gue di DILZ MAPS V6: "+location.href));}
+if(navigator.getBattery){navigator.getBattery().then(b=>{document.getElementById('batt').innerText=Math.round(b.level*100)+"%"});}
+setInterval(()=>{document.getElementById('time').innerText=new Date().toLocaleString('id-ID');},1000);
+fetch('https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json').then(r=>r.json()).then(d=>{let g=d.Infogempa.gempa;document.getElementById('bmkgBox').innerHTML=g.Tanggal+" "+g.Jam+"<br>"+g.Wilayah+"<br>Mag "+g.Magnitude;});
+</script>
+</body>
+</html>
