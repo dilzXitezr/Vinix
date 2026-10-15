@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ V12.1 CLICK FIX</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#050507;color:#fff}
+.header{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;background:#0c0c12;border-bottom:1px solid #222;position:sticky;top:0;z-index:99}
+.tabs{display:flex;gap:6px;padding:8px;background:#0c0c12;overflow-x:auto;position:sticky;top:50px;z-index:98}
+.chip{padding:7px 14px;border-radius:20px;background:#1e1e28;border:1px solid #333;font-size:11px;white-space:nowrap;cursor:pointer}
+.chip.active{background:#fff;color:#000;font-weight:800}
+.row-title{display:flex;justify-content:space-between;align-items:center;margin:14px 10px 8px}
+.grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 10px}
+.card{border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#1a1a22;position:relative;cursor:pointer;border:2px solid transparent;transition:.2s}
+.card:active{transform:scale(.96);border-color:#a855f7}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;bottom:6px;left:6px;background:#000c;padding:4px 8px;border-radius:10px;font-size:8px;font-weight:800}
+.btn-putih{background:#fff;color:#000;border:none;padding:7px 16px;border-radius:20px;font-weight:800;font-size:11px;cursor:pointer}
+.screen{display:none;padding-bottom:70px}.screen.active{display:block}
+.before-after{position:relative;width:100%;height:70vh;overflow:hidden;background:#111;cursor:ew-resize}
+.before-after img{width:100%;height:100%;object-fit:cover}
+.divider{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:2}
+.handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;z-index:3;font-weight:800}
+.menu-list{padding:12px}
+.item{display:flex;gap:12px;align-items:center;background:#14141c;border:1px solid #222;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}
+.item:active{background:#1e1e28}
+.item img{width:48px;height:48px;border-radius:12px;object-fit:cover}
+.item b{font-size:12px}.item p{font-size:9px;opacity:.6;margin:0}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#0c0c12;border-top:1px solid #222;display:flex;justify-content:space-around;padding:10px;z-index:99}
+.bottom div{cursor:pointer;text-align:center}
+/* POPUP */
+#popup{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:999;padding:20px}
+#popup.box{background:#16161e;border:1px solid #333;border-radius:20px;padding:16px;width:100%;max-width:340px}
+#popup img{width:100%;height:220px;object-fit:cover;border-radius:14px}
+#popup.close{float:right;font-size:20px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="header">
+<b>DILZNOELZ <span style="color:#a855f7">REMINI</span> V12.1</b>
+<a href="https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P" target="_blank"><button style="background:#fff;color:#000;border:none;padding:6px 12px;border-radius:20px;font-weight:800;font-size:11px;cursor:pointer">SALURAN</button></a>
+</div>
+
+<div class="tabs">
+<div class="chip active" onclick="tab(0)">Modeling 📸</div>
+<div class="chip" onclick="tab(1)">Hasil ✨</div>
+<div class="chip" onclick="tab(2)">Menu Remini</div>
+<div class="chip" onclick="tab(0)">Aesthetic 🎨</div>
+</div>
+
+<div id="s0" class="screen active">
+<div class="row-title"><div><b>Modeling Photoshoot 📸</b><br><span style="font-size:9px;opacity:.6">24 PHOTOS • 🔥 KLIK FOTO NYA!</span></div><button class="btn-putih" onclick="openPaket('Modeling Photoshoot')">Dapatkan Paket</button></div>
+<div class="grid2" id="modelGrid"></div>
+
+<div class="row-title"><div><b>Aesthetic Photoshoot 🎨</b><br><span style="font-size:9px;opacity:.6">15 PHOTOS • ❤️‍🔥 KLIK!</span></div><button class="btn-putih" onclick="openPaket('Aesthetic Photoshoot')">Dapatkan Paket</button></div>
+<div class="grid2" id="aesGrid"></div>
+</div>
+
+<div id="s1" class="screen">
+<div style="display:flex;justify-content:space-between;padding:10px"><span>Sebelum</span><b>Hasil - GESER KIRI KANAN</b><span>Sesudah</span></div>
+<div class="before-after" id="baBox">
+<img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800">
+<div class="divider" id="divi"></div><div class="handle" id="hand">↔</div>
+</div>
+<div style="display:flex;justify-content:center;gap:40px;padding:14px"><div style="text-align:center;font-size:11px;cursor:pointer" onclick="alert('Colors Enhanced!')">🎨<br>Colors</div><div style="text-align:center;font-size:11px;cursor:pointer" onclick="alert('Background Enhanced!')">🖼️<br>Background Enhancer</div></div>
+</div>
+
+<div id="s2" class="screen">
+<div class="menu-list">
+<b>Selamat datang di Remini</b><br><b style="font-size:18px">Apa yang membawamu kemari?</b><br><br>
+<div class="item" onclick="tab(0)"><img src="https://picsum.photos/seed/r1/100"><div><p>MODEL AI</p><b>Modeling Photoshoot 📸</b></div><span style="margin-left:auto">›</span></div>
+<div class="item" onclick="alert('AI Doll Filter - Klik Dapatkan Paket dulu!')"><img src="https://picsum.photos/seed/r2/100"><div><p>FILTER AI</p><b>AI Doll Filter</b></div><span style="margin-left:auto">›</span></div>
+<div class="item" onclick="alert('Generate AI Photos - Segera!')"><img src="https://picsum.photos/seed/r3/100"><div><p>FILTER AI</p><b>Generate AI Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item" onclick="tab(1)"><img src="https://picsum.photos/seed/r4/100"><div><p>PENYEMPURNAAN</p><b>Retouch + Hasil ✨</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r5/100"><div><p>TINGKATKAN</p><b>Enhance Your Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r6/100"><div><p>KEPERLUAN</p><b>Fix Blurry Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r7/100"><div><p>TINGKATKAN</p><b>Restore Old Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r8/100"><div><p>FOTO PASANGAN</p><b>AI Couples</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r9/100"><div><p>FILTER AI</p><b>AI Los Angeles Filter</b></div><span style="margin-left:auto">›</span></div>
+</div>
+</div>
+
+<div class="bottom">
+<div onclick="tab(0)">🏠<br><span style="font-size:9px">Preset</span></div>
+<div onclick="tab(1)">✨<br><span style="font-size:9px">Hasil</span></div>
+<div onclick="tab(2)">☰<br><span style="font-size:9px">Menu</span></div>
+</div>
+
+<!-- POPUP DETAIL -->
+<div id="popup" onclick="if(event.target==this)closePop()"><div class="box">
+<span class="close" onclick="closePop()">×</span>
+<img id="popImg" src="">
+<h3 id="popTitle" style="margin:10px 0 4px">Modeling</h3>
+<p style="font-size:11px;opacity:.6;margin:0">24 foto AI premium • Sekali klik jadi model profesional! Klik Dapatkan Paket untuk akses full.</p>
+<button onclick="window.open('https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P','_blank')" style="width:100%;margin-top:12px;background:#fff;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800">Dapatkan Paket - GRATIS</button>
+</div></div>
+
+<script>
+const models = Array.from({length:6},(_,i)=>`https://picsum.photos/seed/m${i+10}/400`);
+const aes = Array.from({length:6},(_,i)=>`https://picsum.photos/seed/a${i+20}/400`);
+function makeGrid(id,arr,name){
+ const el=document.getElementById(id);
+ el.innerHTML=arr.map((src,i)=>`<div class="card" onclick="openDetail('${src}','${name} #${i+1}')"><img src="${src}"><span class="badge">${name.toUpperCase()}</span></div>`).join('');
+}
+makeGrid('modelGrid',models,'Model');
+makeGrid('aesGrid',aes,'Aesthetic');
+
+function tab(n){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById('s'+n).classList.add('active');
+ document.querySelectorAll('.chip').forEach((c,i)=>c.classList.toggle('active',i===n));
+ window.scrollTo(0,0);
+}
+function openDetail(src,title){
+ document.getElementById('popImg').src=src;
+ document.getElementById('popTitle').innerText=title;
+ document.getElementById('popup').style.display='grid';
+}
+function openPaket(name){openDetail(models[0],name+' - Paket Premium')}
+function closePop(){document.getElementById('popup').style.display='none'}
+
+// Slider geser
+const box=document.getElementById('baBox');
+let drag=false;
+box.addEventListener('pointerdown',()=>drag=true);
+window.addEventListener('pointerup',()=>drag=false);
+box.addEventListener('pointermove',e=>{
+ if(!drag)return;
+ const rect=box.getBoundingClientRect();
+ let x=e.clientX-rect.left;
+ let p=Math.max(0,Math.min(100, x/rect.width*100));
+ document.getElementById('divi').style.left=p+'%';
+ document.getElementById('hand').style.left=p+'%';
+});
+</script>
+</body>
+</html>
