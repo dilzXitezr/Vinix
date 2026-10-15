@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X-FAR V16 FINAL LENGKAP - DILZNOELZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#070a1a;color:#fff;min-height:100vh}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% -10%,#1e2f6a,#070a1a 70%);z-index:-1}
+.header{padding:12px;display:flex;justify-content:space-between;align-items:center;background:#000a;border-bottom:1px solid #ffffff18;position:sticky;top:0;z-index:50}
+.phones{max-width:420px;margin:auto;padding:12px}
+.phone{background:linear-gradient(180deg,#121a36,#0a0e1f);border-radius:32px;border:3px solid #4a6aff;box-shadow:0 0 40px #4a6aff88;padding:12px}
+.topbar{display:flex;justify-content:space-between;padding:6px 4px;font-size:10px}
+.topbar b{background:#fff;color:#000;padding:5px 14px;border-radius:20px;font-family:'Orbitron';font-size:10px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.box{background:linear-gradient(135deg,#d8e2ff,#8aa0ff);color:#000;border-radius:16px;padding:10px;cursor:pointer}
+.box.dark{background:linear-gradient(135deg,#1e2d6a,#4a6aff);color:#fff}
+.num{font-family:'Orbitron';font-size:24px;font-weight:800}
+.label{font-size:8px;font-weight:700;opacity:.8}
+.title{text-align:center;font-family:'Orbitron';font-size:14px;margin:12px 0 2px}
+.sub{text-align:center;font-size:8px;opacity:.5;letter-spacing:2px;margin-bottom:8px}
+.search{display:flex;align-items:center;background:#0006;border:1px solid #ffffff22;border-radius:12px;padding:10px;gap:8px;margin:8px 0}
+.search input{background:transparent;border:none;color:#fff;width:100%;font-size:12px;outline:none}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.chip{padding:6px 12px;border-radius:20px;font-size:9px;white-space:nowrap;border:1px solid #ffffff22;background:#ffffff0a;cursor:pointer}
+.chip.active{background:#fff;color:#000;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.tool{background:linear-gradient(180deg,#ffffff14,#ffffff06);border:1px solid #ffffff18;border-radius:14px;padding:11px 4px;text-align:center;cursor:pointer;transition:.15s;position:relative}
+.tool:active{transform:scale(.92);border-color:#4a6aff}
+.tool span{font-size:22px;display:block}
+.tool b{font-size:7px;display:block;margin-top:4px}
+.tool .new{position:absolute;top:4px;right:4px;background:#ff2a6a;color:#fff;font-size:6px;padding:2px 4px;border-radius:6px;font-weight:800}
+.input{width:100%;background:#0006;border:1px solid #ffffff22;border-radius:12px;padding:12px;color:#fff;font-size:12px;margin:8px 0;outline:none}
+.btn{width:100%;background:linear-gradient(90deg,#5a7aff,#2a4aff);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800;cursor:pointer;margin-top:6px}
+.btn-white{background:#fff;color:#000}
+.result{background:#0006;border:1px dashed #5a7aff55;border-radius:12px;padding:10px;margin-top:10px;font-size:11px;display:none;word-break:break-all;white-space:pre-wrap}
+#loginPage{position:fixed;inset:0;background:radial-gradient(circle at 50% 0%,#1e2f6a,#070a1a);display:grid;place-items:center;z-index:9999;padding:20px}
+.loginCard{background:linear-gradient(180deg,#1b2450,#121832);border:1px solid #5a7aff88;border-radius:24px;padding:22px;width:100%;max-width:340px;box-shadow:0 0 60px #4a6aff66;text-align:center}
+#mainApp{display:none}
+#reader{width:100%;border-radius:14px;overflow:hidden;background:#000;margin-top:8px}
+#popup{position:fixed;inset:0;background:#000c;backdrop-filter:blur(14px);display:none;place-items:center;z-index:999;padding:16px}
+#popup.show{display:grid}
+.card{background:linear-gradient(180deg,#1b2450,#11182f);border:1px solid #5a7aff88;border-radius:24px;padding:18px;width:100%;max-width:380px;box-shadow:0 0 60px #4a6aff66;max-height:90vh;overflow-y:auto}
+.iconBox{width:50px;height:50px;background:linear-gradient(135deg,#5a7aff,#2a4aff);border-radius:14px;display:grid;place-items:center;font-size:24px}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<div id="loginPage">
+<div class="loginCard">
+<div style="width:60px;height:60px;background:linear-gradient(135deg,#5a7aff,#2a4aff);border-radius:16px;display:grid;place-items:center;margin:0 auto 12px;font-size:28px">🔐</div>
+<h2 style="font-family:'Orbitron';margin:0">X-FAR V16</h2>
+<p style="font-size:9px;opacity:.6;margin:6px 0 14px;letter-spacing:2px">DILZNOELZ • LOGIN + QRIS + 36 TOOLS</p>
+<input class="input" id="user" placeholder="Username" value="137">
+<input class="input" id="pass" type="password" placeholder="Password" value="147">
+<button class="btn" onclick="login()">MASUK - USER 137</button>
+<p id="loginErr" style="color:#ff5a7a;font-size:11px;margin-top:8px;display:none">User/PW Salah! Harus 137 / 147</p>
+</div>
+</div>
+
+<div id="mainApp">
+<div class="header"><b>X-FAR × <span style="color:#5a7aff">DILZNOELZ V16</span></b><button onclick="location.reload()" style="background:#fff;color:#000;border:none;padding:6px 14px;border-radius:20px;font-weight:800;font-size:10px">LOGOUT</button></div>
+<div class="phones">
+<div class="phone">
+<div class="topbar"><span id="clock">11:10</span><b>X-FAR</b><span>●</span></div>
+<div class="stats"><div class="box dark"><div class="label">🛠️ TOOLS 36</div><div class="num">36</div></div><div class="box"><div class="label">👥 ONLINE</div><div class="num">12</div></div></div>
+<div class="title">TOOLS CONTROL CENTER</div><div class="sub">DILZNOELZ V16 FINAL • USER 137 LOGIN</div>
+<div class="search">🔍<input id="cari" placeholder="Cari 36 tools... qris, dana, bug, scan" oninput="filterTools()"></div>
+<div class="chips">
+<div class="chip active" onclick="cat('all',this)">ALL 36</div>
+<div class="chip" onclick="cat('bug',this)">BUG 15</div>
+<div class="chip" onclick="cat('osint',this)">OSINT 8</div>
+<div class="chip" onclick="cat('net',this)">NET 6</div>
+<div class="chip" onclick="cat('util',this)">UTIL 7</div>
+<div class="chip" onclick="cat('qris',this)">QRIS</div>
+</div>
+<div class="grid" id="grid"></div>
+<div style="margin-top:12px;background:linear-gradient(90deg,#fff,#cdd8ff);color:#000;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="openTool('DANA-CEK')"><div><b style="font-size:12px">💳 DANA Wallet</b><br><span style="font-size:9px">Rp 1.250.000 • Tap detail</span></div><span style="background:#2a4aff;color:#fff;width:30px;height:30px;border-radius:50%;display:grid;place-items:center">→</span></div>
+<div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="background:#ffffff0a;border:1px solid #ffffff15;border-radius:12px;padding:10px;text-align:center" onclick="openTool('OWNER')"><b style="font-size:9px">👑 OWNER</b><br><span style="font-size:10px;font-family:'Orbitron'">TAMA</span></div>
+<div style="background:#ffffff0a;border:1px solid #ffffff15;border-radius:12px;padding:10px;text-align:center" onclick="openTool('SAVE-KONTAK')"><b style="font-size:9px">💾 SAVE NO</b><br><span style="font-size:10px">128 Kontak</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="popup" onclick="if(event.target==this)closePop()"><div class="card"><div style="display:flex;gap:12px;align-items:center"><div class="iconBox" id="pIcon">🚀</div><div><h3 id="pTitle" style="margin:0;font-family:'Orbitron';font-size:14px">TITLE</h3><p id="pDesc" style="margin:2px 0 0;font-size:10px;opacity:.6">desc</p></div></div><div id="pBody" style="margin-top:12px"></div><div class="result" id="pResult"></div><button class="btn btn-white" style="margin-top:10px" onclick="closePop()">Tutup</button></div></div>
+
+<script>
+function login(){let u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();if(u==='137'&&p==='147'){document.getElementById('loginPage').style.display='none';document.getElementById('mainApp').style.display='block';render(tools);setInterval(()=>{document.getElementById('clock').innerText=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})},1000)}else{document.getElementById('loginErr').style.display='block'}}
+const tools=[
+{name:'X-LEAK',icon:'🧬',cat:'osint',desc:'Leak Checker'},
+{name:'X-SCAN',icon:'📡',cat:'net',desc:'Network Scanner'},
+{name:'X-LOOK',icon:'👁️',cat:'osint',desc:'OSINT Lookup'},
+{name:'BUG #01',icon:'🐛',cat:'bug',desc:'Bug Delay Sim'},
+{name:'BUG #02',icon:'💣',cat:'bug',desc:'Bug Force Sim'},
+{name:'SPAM',icon:'⚡',cat:'bug',desc:'Spam Protect'},
+{name:'BUG #03',icon:'🦠',cat:'bug',desc:'Bug Blank'},
+{name:'BUG #04',icon:'👻',cat:'bug',desc:'Ghost Bug'},
+{name:'BUG #05',icon:'💥',cat:'bug',desc:'Crash UI Sim'},
+{name:'BUG #06',icon:'🔥',cat:'bug',desc:'Fire Sim'},
+{name:'BUG #07',icon:'❄️',cat:'bug',desc:'Freeze Sim'},
+{name:'BUG #08',icon:'🌀',cat:'bug',desc:'Loop Sim'},
+{name:'BUG #09',icon:'🌪️',cat:'bug',desc:'Storm Sim'},
+{name:'BUG #10',icon:'⚠️',cat:'bug',desc:'Warning Sim'},
+{name:'BUG #11',icon:'📵',cat:'bug',desc:'Block Sim'},
+{name:'BUG #12',icon:'🔇',cat:'bug',desc:'Mute Sim'},
+{name:'BUG #13',icon:'💀',cat:'bug',desc:'Dead Sim'},
+{name:'BUG #14',icon:'🤖',cat:'bug',desc:'Bot Bug'},
+{name:'BUG #15',icon:'👾',cat:'bug',desc:'Virus Sim'},
+{name:'IP-TRACK',icon:'📍',cat:'osint',desc:'IP Tracker'},
+{name:'NUM-LOOK',icon:'📱',cat:'osint',desc:'Number Lookup'},
+{name:'EMAIL',icon:'📧',cat:'osint',desc:'Email Check'},
+{name:'USER-FIND',icon:'🔍',cat:'osint',desc:'Username Finder'},
+{name:'DOMAIN',icon:'🌐',cat:'net',desc:'Domain Info'},
+{name:'PORT-SCAN',icon:'🔌',cat:'net',desc:'Port Scanner'},
+{name:'WHOIS',icon:'📄',cat:'net',desc:'Whois'},
+{name:'DNS-LOOK',icon:'🗂️',cat:'net',desc:'DNS Lookup'},
+{name:'PING',icon:'🏓',cat:'net',desc:'Ping'},
+{name:'DANA-CEK',icon:'💳',cat:'util',desc:'Dana Checker'},
+{name:'QRIS SCAN',icon:'📷',cat:'qris',desc:'Scan QRIS Camera',new:true},
+{name:'QR-GEN',icon:'🔳',cat:'qris',desc:'QRIS Generator'},
+{name:'ENC-DEC',icon:'🔐',cat:'util',desc:'Encrypt'},
+{name:'BASE64',icon:'🔢',cat:'util',desc:'Base64'},
+{name:'SHORT-LINK',icon:'🔗',cat:'util',desc:'Shortener'},
+{name:'SAVE-KONTAK',icon:'💾',cat:'util',desc:'Save Number'},
+{name:'X-FAR AI',icon:'🤖',cat:'util',desc:'AI Assistant',new:true},
+];
+function render(list){document.getElementById('grid').innerHTML=list.map(t=>`<div class="tool" data-cat="${t.cat}" onclick="openTool('${t.name}')">${t.new?'<span class=new>NEW</span>':''}<span>${t.icon}</span><b>${t.name}</b></div>`).join('')}
+function openTool(name){
+ const t=tools.find(x=>x.name===name) || {name:name,icon:'🚀',cat:'util',desc:'Tools'};
+ document.getElementById('pIcon').innerText=t.icon;document.getElementById('pTitle').innerText=t.name;document.getElementById('pDesc').innerText=t.desc;
+ const b=document.getElementById('pBody');const r=document.getElementById('pResult');r.style.display='none';r.innerText='';
+ if(t.name==='QRIS SCAN'){
+  b.innerHTML=`<div id="reader"></div><button class="btn" id="btnScan" onclick="startScan()">📷 MULAI SCAN QRIS</button><button class="btn" id="btnStop" style="display:none;background:#ffffff15" onclick="stopScan()">STOP</button><div class="result" id="qrLive" style="display:none"></div>`;
+ } else if(t.cat==='qris' && t.name==='QR-GEN'){
+  b.innerHTML=`<input class="input" id="qrInput" placeholder="Isi QRIS / Link DANA"><button class="btn" onclick="runQRGen()">GENERATE QR</button><div id="qrOut" style="text-align:center;margin-top:10px"></div>`;
+ } else if(t.cat==='bug'){
+  b.innerHTML=`<p style="font-size:11px;opacity:.7">Mode edukasi aman - simulasi visual tanpa merusak HP. Untuk belajar proteksi anti-bug WA.</p><button class="btn" onclick="run('Simulasi ${t.name}...','✅ Simulasi selesai - Aman ✅')">SIMULASI AMAN</button>`;
+ } else {
+  b.innerHTML=`<input class="input" placeholder="Input untuk ${t.name}"><button class="btn" onclick="run('Memproses ${t.name}...','✅ ${t.name} berhasil (mode aman, tidak ada hack/bobol)')">JALANKAN</button>`;
+ }
+ document.getElementById('popup').classList.add('show');
+}
+function closePop(){document.getElementById('popup').classList.remove('show');stopScan()}
+function run(load,resTxt){const r=document.getElementById('pResult');r.style.display='block';r.innerText='⏳ '+load;setTimeout(()=>r.innerText=resTxt,1200)}
+function filterTools(){let q=document.getElementById('cari').value.toLowerCase();let f=tools.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q));render(f)}
+function cat(c,el){document.querySelectorAll('.chip').forEach(ch=>ch.classList.remove('active'));el.classList.add('active');if(c==='all')render(tools);else render(tools.filter(t=>t.cat===c||(c==='qris'&&t.cat==='qris')))}
+let html5QrcodeScanner=null;
+function startScan(){
+ const live=document.getElementById('qrLive'); if(live){live.style.display='none'}
+ html5QrcodeScanner=new Html5Qrcode("reader");
+ document.getElementById('btnScan').style.display='none';document.getElementById('btnStop').style.display='block';
+ html5QrcodeScanner.start({facingMode:"environment"},{fps:10,qrbox:{width:250,height:250}},
+  (decodedText)=>{
+   const r=document.getElementById('pResult'); r.style.display='block'; r.innerText=`✅ QRIS Terdeteksi:\n${decodedText}\n\nTipe: ${decodedText.includes('qris')||decodedText.includes('id.co')?'QRIS Payment':'QR Biasa'}`;
+   const qLive=document.getElementById('qrLive'); if(qLive){qLive.style.display='block'; qLive.innerText=`✅ Hasil: ${decodedText}`}
+   stopScan();
+  },(err)=>{}
+ ).catch(err=>{const r=document.getElementById('pResult');r.style.display='block';r.innerText='❌ Kamera error: '+err});
+}
+function stopScan(){if(html5QrcodeScanner){html5QrcodeScanner.stop().then(()=>{try{html5QrcodeScanner.clear()}catch(e){}}).catch(()=>{}); html5QrcodeScanner=null} const bs=document.getElementById('btnScan'),bt=document.getElementById('btnStop'); if(bs)bs.style.display='block'; if(bt)bt.style.display='none'}
+function runQRGen(){const v=document.getElementById('qrInput').value||'contoh-qris-dilz';const out=document.getElementById('qrOut');out.innerHTML=`<p style="font-size:10px">QR untuk: ${v}</p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(v)}" style="border-radius:12px;border:3px solid #fff">`}
+render(tools);
+</script>
+</body>
+</html>
