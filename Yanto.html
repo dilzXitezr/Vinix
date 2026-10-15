@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ V8 ULTRA HD - DARK STORE + MAPS</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#080510;color:#fff}
+.topbar{position:sticky;top:0;z-index:99;background:rgba(10,6,18,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #a855f755;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.card{margin:12px;border-radius:22px;background:linear-gradient(180deg,#1a1030,#120c22);border:1px solid #a855f733;padding:14px}
+#map{height:220px;border-radius:16px;border:1px solid #a855f755;margin-top:10px}
+.btn-wa{flex:1;background:linear-gradient(135deg,#a855f7,#ec4899);border:none;color:#fff;padding:14px;border-radius:16px;font-weight:800}
+.btn-ch{flex:1;background:rgba(42,30,69,.8);border:1px solid #a855f755;color:#fff;padding:14px;border-radius:16px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="topbar"><b>DILZNOELZ <span style="color:#ec4899">DARK</span> V8 ULTRA HD</b><a href="https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P"><button style="background:linear-gradient(135deg,#a855f7,#ec4899);border:none;color:#fff;padding:8px 20px;border-radius:24px;font-weight:800">SALURAN 💜</button></a></div>
+
+<div class="card">
+<h3 style="margin:0">DILZNOELZ DARK STORE</h3>
+<p style="font-size:11px;opacity:.6">PP DARK ORIGINAL • QRIS • MATA 6D • HD 6 • SUKABUMI 9HD</p>
+<div style="display:flex;gap:12px;background:#22143a;padding:12px;border-radius:16px;margin-top:12px">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P" width="100" style="background:#fff;border-radius:12px;padding:6px">
+<div><b>QRIS DILZNOELZ DARK 💜</b><br><small>DANA • GOPAY • OVO • LinkAja<br>A/N DILZNOELZ DARK</small><br><a href="https://wa.me/6285720945347"><button style="margin-top:8px;background:linear-gradient(135deg,#a855f7,#ec4899);border:none;color:#fff;padding:8px 14px;border-radius:10px;font-weight:800">KONFIRMASI WA</button></a></div>
+</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<a href="https://wa.me/6285720945347?text=Halo%20Min%20DILZNOELZ%20DARK" style="flex:1;text-decoration:none"><button class="btn-wa">WA 085720945347</button></a>
+<a href="https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P" style="flex:1;text-decoration:none"><button class="btn-ch">SALURAN LU</button></a>
+</div>
+</div>
+
+<div class="card"><b>🗺️ MAPS LIVE SUKABUMI 9HD</b><div id="map"></div><p id="loc" style="font-size:11px;opacity:.7;margin-top:8px">📍 Mendeteksi...</p></div>
+<div class="card"><b>☁️ Cuaca • Eye 6D</b><p id="cuaca">Sukabumi 26°C • Eye 6D aktif</p><input id="kota" placeholder="Kota: Sukabumi" style="width:100%;background:#1a132e;border:1px solid #a855f755;border-radius:14px;padding:12px;color:#fff"><button onclick="document.getElementById('cuaca').innerText=document.getElementById('kota').value+': 26°C Eye 6D'" style="width:100%;background:linear-gradient(135deg,#a855f7,#ec4899);border:none;color:#fff;padding:12px;border-radius:14px;font-weight:800;margin-top:8px">CEK</button></div>
+<div class="card"><b>🔋 Baterai</b><p id="batt">93% — Penuh 💜 — Eye 6D</p><p id="time" style="font-size:11px;opacity:.6"></p></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+let map=L.map('map').setView([-6.9175,106.927],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+let mk=L.marker([-6.9175,106.927]).addTo(map).bindPopup("DILZNOELZ DARK V8").openPopup();
+navigator.geolocation.watchPosition(p=>{let lat=p.coords.latitude,lng=p.coords.longitude;map.setView([lat,lng],16);mk.setLatLng([lat,lng]);document.getElementById('loc').innerText='📍 Live: '+lat.toFixed(5)+','+lng.toFixed(5)});
+if(navigator.getBattery){navigator.getBattery().then(b=>{let u=()=>{document.getElementById('batt').innerText=Math.round(b.level*100)+'% — Penuh 💜'};u();});}
+setInterval(()=>{document.getElementById('time').innerText=new Date().toLocaleString('id-ID');},1000);
+</script>
+</body>
+</html>
