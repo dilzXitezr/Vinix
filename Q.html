@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ - Developer & Pembuat Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#e5e5e5;font-family:'Space Grotesk',sans-serif}
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;padding:14px 18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}.logo-icon{width:32px;height:32px;background:#fff;color:#000;border-radius:50%;display:grid;place-items:center;font-weight:900}
+.hero{padding:20px 18px 10px}.hero-img{width:100%;height:260px;background:#111;border-radius:16px;overflow:hidden;position:relative;border:1px solid #222}
+.hero h1{font-size:34px;line-height:1.05;font-weight:700;margin:18px 0 10px}
+.hero p{font-size:14px;color:#888;line-height:1.5;margin-bottom:18px}.btns{display:flex;gap:10px}.btn{padding:11px 18px;border-radius:2px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid #333}.btn-primary{background:#fff;color:#000}.btn-secondary{background:transparent;color:#e5e5e5}
+section{padding:26px 18px;border-top:1px solid #111}.section-title{font-size:13px;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:18px;font-family:'JetBrains Mono',monospace}
+.card{background:#111;border:1px solid #1e1e1e;border-radius:14px;overflow:hidden;margin-bottom:18px}.card-img{width:100%;height:170px;background:#0f0f0f;display:grid;place-items:center;color:#444;border-bottom:1px solid #1e1e1e;position:relative}.card-body{padding:14px}.card-price{font-size:10px;background:#fff;color:#000;padding:4px 8px;display:inline-block;font-weight:700;margin-bottom:8px}.card-title{font-size:16px;font-weight:700;margin:4px 0 6px}.card-desc{font-size:12px;color:#666;line-height:1.5}
+.tools-list{display:grid;gap:10px}.tool-item{background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center}.tool-icon{width:36px;height:36px;background:#1a1a1a;border-radius:8px;display:grid;place-items:center}.tool-name{font-size:13px;font-weight:600}.tool-desc{font-size:11px;color:#555}.tool-btn{background:#fff;color:#000;border:none;padding:8px 12px;border-radius:4px;font-size:11px;font-weight:700}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#0a0a0a;border-top:1px solid #1e1e1e;display:flex;justify-content:space-around;padding:10px 0 14px;z-index:100}.bn-item{font-size:10px;color:#555;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px}.bn-item.active{color:#fff}.hidden{display:none}
+footer{text-align:center;padding:20px;font-size:10px;color:#333;border-top:1px solid #111}
+</style>
+</head>
+<body>
+<header><div class="logo"><div class="logo-icon">D</div>DILZNOELZ</div><div>↗ ☀</div></header>
+<div id="page-beranda">
+<div class="hero">
+<div class="hero-img"><div style="padding:20px;color:#555;font-family:monospace;font-size:11px">MARIO 10D ULTRA<br>MONSTER BOSS<br>DILZNOELZ X MARIO<br>NO SUKABUMI</div><div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;justify-content:space-between"><div style="display:flex;gap:8px;align-items:center"><div style="width:32px;height:32px;background:#fff;border-radius:50%;display:grid;place-items:center;color:#000;font-weight:900">D</div><div style="font-size:10px"><b>DILZNOELZ</b><br><span style="color:#666">MONSTER SLAYER</span></div></div><div style="background:#fff;color:#000;font-size:9px;padding:6px 10px;border-radius:20px;font-weight:700">Cianjur • Monster Slayer</div></div></div>
+<h1>Developer &<br>Pembuat Tools</h1>
+<p>Website resmi dari DILZNOELZ — produk digital, tools, game Mario 10D, dan layanan dari DilzNoelz.</p>
+<div class="btns"><button class="btn btn-primary" onclick="go('produk')">Lihat produk</button><button class="btn btn-secondary" onclick="go('tentang')">Tentang saya</button></div>
+</div>
+</div>
+<div id="page-produk" class="hidden"><section>
+<div class="section-title">Produk Kami</div>
+<div class="card"><div class="card-img">👾 SCYBER ONX • MARIO X MONSTER</div><div class="card-body"><div class="card-price">Rp15.000</div><div class="card-title">SCYBER ONX - DILZNOELZ EDITION</div><div class="card-desc">Tools sadap lokasi + kamera + info device + Mario 10D Ultra + Monster Boss Detector. No Sukabumi.</div></div></div>
+<div class="card"><div class="card-img">📱 APK PELACAK & SADAP</div><div class="card-body"><div class="card-price">Rp15.000</div><div class="card-title">APK PELACAK & SADAP - DILZ EDITION</div><div class="card-desc">Tools untuk melacak dan menyadap kamera, lokasi, device info lengkap via link.</div></div></div>
+<div class="card"><div class="card-img">🤖 DEV-AI NO BATAS</div><div class="card-body"><div class="card-price">Rp60.000 (PERMANEN)</div><div class="card-title">AI No Sensor - DILZNOELZ X MARIO</div><div class="card-desc">AI no sensor tanpa batasan + Mario AI 10D + Batrai DDL + Cuaca DDL + Profil DDL.</div></div></div>
+</section></div>
+<div id="page-tools" class="hidden"><section>
+<div class="section-title">Tools — 15 Tools Gratis</div>
+<div class="tools-list" id="toolsList"></div>
+</section></div>
+<div id="page-tentang" class="hidden"><section>
+<div class="section-title">Tentang saya</div>
+<p style="font-size:13px;color:#888;line-height:1.6">Halo, saya <b style="color:#fff">DilzNoelz</b> dari Cianjur - Monster Slayer. Fokus pengembangan website, tools digital, game Mario 10D + Monster Boss + Batrai DDL Banyak/Setengah/Sedikit + No Sukabumi.</p>
+<div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:12px"><small>Proyek selesai</small><br><b>60+</b></div><div style="background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:12px"><small>Pelanggan</small><br><b>1,580K</b></div></div>
+</section></div>
+<div id="page-sosial" class="hidden"><section>
+<div class="section-title">Sosial media</div>
+<p style="font-size:13px;color:#666;margin-bottom:16px">Temukan dan ikuti akun media sosial saya.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:14px">💬<br><b>Saluran Utama</b><br><small>WhatsApp Channel</small></div><div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:14px">✈️<br><b>Telegram</b><br><small>@dilznoelz</small></div><div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:14px">📸<br><b>Instagram</b><br><small>@dilznoelz_</small></div><div style="background:#111;border:1px solid #1e1e1e;border-radius:12px;padding:14px">🎵<br><b>TikTok</b><br><small>@dilznoelz.mario</small></div></div>
+</section></div>
+<footer>© 2026 DILZNOELZ. Dibuat oleh DILZNOELZ.<br>Saluran resmi • Kopi admin Contact 0895xxxxxxx</footer>
+<div style="height:70px"></div>
+<div class="bottom-nav">
+<div class="bn-item active" id="bn-beranda" onclick="go('beranda')">⌂<br>Beranda</div>
+<div class="bn-item" id="bn-produk" onclick="go('produk')">◫<br>Produk</div>
+<div class="bn-item" id="bn-tools" onclick="go('tools')">⚒<br>Tools</div>
+<div class="bn-item" id="bn-tentang" onclick="go('tentang')">◍<br>Tentang</div>
+<div class="bn-item" id="bn-sosial" onclick="go('sosial')">◐<br>Sosial</div>
+</div>
+<script>
+var tools=[
+{n:'TEMUKAN GAMBAR',d:'Cari gambar dengan mudah.',i:'🖼️'},
+{n:'STALK TIKTOK',d:'Pencarian profil TikTok.',i:'🎵'},
+{n:'SPOTIFY DOWNLOADER',d:'Spotify Downloader MP3.',i:'🎧'},
+{n:'TIKTOK DOWNLOADER',d:'TikTok Downloader.',i:'⬇️'},
+{n:'FAKE LOBY ML',d:'Fake Lobby Mobile Legends.',i:'🎮'},
+{n:'MARIO 10D ULTRA',d:'Game Mario 10D Ultra HD + Monster Boss',i:'🍄'},
+{n:'MONSTER SLAYER',d:'Game lawan Monster 10D',i:'👾'},
+{n:'BATRAI DDL',d:'Batrai Banyak 100% / Setengah 50% / Sedikit 20%',i:'🔋'},
+{n:'CUACA DDL',d:'Cuaca Cianjur 28° - Per jam - 7 hari',i:'⛅'},
+{n:'PROFIL DDL',d:'Profil Dilznoelz X Mario',i:'👤'},
+{n:'SSS TIKTOK HD',d:'TikTok No Watermark HD',i:'🎬'},
+{n:'ALIGHT MOTION PACK',d:'Preset Jedag Jedug',i:'✨'},
+{n:'HD PHOTO PRO',d:'HD Foto 4K',i:'📸'},
+{n:'WEB PRANK V2',d:'Website prank versi 2',i:'😜'},
+{n:'WEB CEK NIK',d:'Tools cek Nik',i:'🪪'}
+];
+function render(){var el=document.getElementById('toolsList');if(!el)return;el.innerHTML=tools.map(t=>`<div class="tool-item"><div style="display:flex;gap:10px;align-items:center"><div class="tool-icon">${t.i}</div><div><div class="tool-name">${t.n}</div><div class="tool-desc">${t.d}</div></div></div><button class="tool-btn">Lihat web</button></div>`).join('')}
+function go(page){['beranda','produk','tools','tentang','sosial'].forEach(p=>{var pg=document.getElementById('page-'+p);var bn=document.getElementById('bn-'+p);if(pg)pg.classList.toggle('hidden',p!==page);if(bn)bn.classList.toggle('active',p===page)});if(page==='tools')render();window.scrollTo(0,0)}
+render();
+</script>
+</body>
+</html>
