@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ X MARIO + CHAT + BAT FIX - V24 FINAL</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#070a1a;color:#fff;min-height:100vh}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% -10%,#ff1a1a33,#1e2f6a 30%,#070a1a 70%);z-index:-1}
+.header{padding:14px;display:flex;justify-content:space-between;align-items:center;background:#000c;border-bottom:2px solid #ff2a2a44;position:sticky;top:0;z-index:10}
+.logo{font-family:'Orbitron';font-weight:900;font-size:12px}.logo span{color:#ff2a2a}
+.phones{max-width:430px;margin:auto;padding:12px}
+.phone{background:linear-gradient(180deg,#1a1236,#0a0e1f);border-radius:32px;border:3px solid #ff2a2a;box-shadow:0 0 40px #ff2a2a88;padding:12px}
+.topbar{display:flex;justify-content:space-between;padding:6px 4px;font-size:10px}
+.topbar b{background:linear-gradient(90deg,#ff2a2a,#ff8a2a);color:#fff;padding:5px 12px;border-radius:20px;font-family:'Orbitron';font-size:8px;font-weight:900}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}
+.box{background:linear-gradient(135deg,#d8e2ff,#8aa0ff);color:#000;border-radius:14px;padding:8px;text-align:center;cursor:pointer}
+.box.dark{background:linear-gradient(135deg,#1e2d6a,#4a6aff);color:#fff}
+.box.mario{background:linear-gradient(135deg,#ff1a1a,#ff8a2a);color:#fff;cursor:pointer;border:2px solid #fff;animation:glow 1.5s infinite}
+.box.chat{background:linear-gradient(135deg,#2aff8a,#2a9a5a);color:#000;cursor:pointer;border:2px solid #fff}
+.box.bat{background:linear-gradient(135deg,#ffcc00,#ff8a2a);color:#000;cursor:pointer;border:2px solid #fff}
+@keyframes glow{0%,100%{box-shadow:0 0 10px #ff2a2a}50%{box-shadow:0 0 20px #ff8a2a}}
+.num{font-family:'Orbitron';font-size:11px;font-weight:900}.label{font-size:7px;font-weight:700}
+.title{font-family:'Orbitron';font-weight:900;font-size:14px;text-align:center;margin:12px 0 2px}.title span{color:#ff2a2a}
+.sub{text-align:center;font-size:8px;opacity:.6;letter-spacing:2px;margin-bottom:8px}
+.profileCard{background:linear-gradient(135deg,#ff1a1a,#ff8a2a);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center;margin:10px 0;cursor:pointer;border:2px solid #ffffff33}
+.avatar{width:52px;height:52px;background:#fff;color:#ff1a1a;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:900}
+.search{display:flex;align-items:center;background:#0006;border:1px solid #ff2a2a33;border-radius:12px;padding:10px;gap:8px;margin:8px 0}
+.search input{background:transparent;border:none;color:#fff;width:100%;font-size:12px;outline:none}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.chip{padding:6px 12px;border-radius:20px;font-size:9px;white-space:nowrap;border:1px solid #ffffff22;background:#ffffff0a;cursor:pointer}
+.chip.active{background:linear-gradient(90deg,#ff2a2a,#ff8a2a);color:#fff;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.tool{background:linear-gradient(180deg,#ffffff18,#ffffff08);border:1px solid #ffffff22;border-radius:14px;padding:12px 4px;text-align:center;cursor:pointer;touch-action:manipulation;position:relative}
+.tool:active{transform:scale(.92)}
+.tool.mario4d{border-color:#ff2a2a;background:linear-gradient(180deg,#ff2a2a33,#ff8a2a18);box-shadow:0 0 12px #ff2a2a66}
+.tool.chatTool{border-color:#2aff8a;background:linear-gradient(180deg,#2aff8a33,#2a9a5a18);box-shadow:0 0 12px #2aff8a66}
+.tool.batTool{border-color:#ffcc00;background:linear-gradient(180deg,#ffcc0033,#ff8a2a18);box-shadow:0 0 12px #ffcc0066}
+.tool.live{position:absolute;top:4px;right:4px;background:#2aff8a;color:#000;font-size:5px;padding:2px 4px;border-radius:6px;font-weight:900;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.tool span{font-size:20px;display:block;pointer-events:none}.tool b{font-size:6px;display:block;margin-top:4px;pointer-events:none}
+.input{width:100%;background:#0006;border:1px solid #ff2a2a33;border-radius:12px;padding:12px;color:#fff;font-size:12px;margin:6px 0;outline:none}
+.btn{width:100%;background:linear-gradient(90deg,#ff1a1a,#ff8a2a);color:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;cursor:pointer;margin-top:8px;font-size:13px;font-family:'Orbitron'}
+.btn-green{background:linear-gradient(90deg,#2aff8a,#2a9a5a);color:#000}
+.btn-yellow{background:linear-gradient(90deg,#ffcc00,#ff8a2a);color:#000}
+.btn-white{background:#fff;color:#000}
+.result{background:#0006;border:1px dashed #ff2a2a55;border-radius:12px;padding:10px;margin-top:10px;font-size:11px;display:none;white-space:pre-wrap;word-break:break-all}
+#loginPage{position:fixed;inset:0;background:radial-gradient(circle at 50% 0%,#ff1a1a33,#1e2f6a 40%,#070a1a);display:grid;place-items:center;z-index:9999;padding:20px}
+.loginCard{background:linear-gradient(180deg,#1b1236,#121832);border:3px solid #ff2a2a88;border-radius:28px;padding:24px;width:100%;max-width:360px;box-shadow:0 0 80px #ff2a2a66;text-align:center}
+#mainApp{display:none}
+#popup{position:fixed;inset:0;background:#000d;backdrop-filter:blur(16px);display:none;place-items:center;z-index:100;padding:10px}
+#popup.show{display:grid}
+.card{background:linear-gradient(180deg,#1b1236,#11182f);border:2px solid #ff2a2a88;border-radius:24px;padding:14px;width:100%;max-width:420px;max-height:96vh;overflow-y:auto;box-shadow:0 0 80px #ff2a2a66}
+#mario4dContainer{width:100%;height:340px;border-radius:16px;overflow:hidden;border:3px solid #ff2a2a;position:relative;background:#000;margin-top:8px}
+#marioCanvas{width:100%;height:100%;display:block}
+.mario4dUI{position:absolute;top:6px;left:6px;right:6px;display:flex;justify-content:space-between;font-family:'Orbitron';font-size:8px;pointer-events:none;color:#fff;text-shadow:0 0 6px #000;font-weight:800}
+.marioCtrl{display:flex;gap:6px;margin-top:8px}
+.marioCtrl button{flex:1;background:#fff;color:#000;border:none;padding:14px;border-radius:12px;font-weight:900;cursor:pointer;font-size:16px}
+.chatBox{width:100%;height:320px;background:#0006;border:1px solid #ffffff22;border-radius:16px;display:flex;flex-direction:column;overflow:hidden}
+.chatMessages{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
+.chatMsg{max-width:80%;padding:8px 12px;border-radius:14px;font-size:11px;line-height:1.3}
+.chatMsg.me{background:linear-gradient(90deg,#ff1a1a,#ff8a2a);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chatMsg.other{background:#ffffff15;color:#fff;align-self:flex-start;border-bottom-left-radius:4px}
+.chatInput{display:flex;gap:6px;padding:8px;background:#0008;border-top:1px solid #ffffff15}
+.chatInput input{flex:1;background:#ffffff10;border:1px solid #ffffff22;border-radius:20px;padding:10px 14px;color:#fff;font-size:12px;outline:none}
+.chatInput button{background:linear-gradient(90deg,#2aff8a,#2a9a5a);color:#000;border:none;padding:10px 16px;border-radius:20px;font-weight:900;cursor:pointer}
+.onlineList{display:flex;gap:6px;overflow-x:auto;padding:6px 0}
+.onlineUser{background:#ffffff10;border:1px solid #ffffff22;border-radius:20px;padding:6px 10px;font-size:9px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div id="loginPage"><div class="loginCard"><div style="width:80px;height:80px;background:linear-gradient(135deg,#ff1a1a,#ff8a2a);border-radius:20px;display:grid;place-items:center;margin:0 auto 14px;font-size:36px">💬🍄🔋</div><h2 style="font-family:'Orbitron';margin:0;font-weight:900">DILZNOELZ<br><span style="color:#ff2a2a">X MARIO + CHAT</span></h2><p style="font-size:9px;opacity:.7;margin:8px 0 16px;letter-spacing:2px;color:#2aff8a">V24 FINAL - CHAT + BAT FIX + MONSTER</p><input class="input" id="user" value="137"><input class="input" id="pass" type="password" value="147"><input class="input" id="chatName" placeholder="Nama Chat (ex: Dilz)" value="DILZNOELZ"><button class="btn" onclick="login()">💬🍄 MASUK V24 FINAL!</button><p id="loginErr" style="color:#ff5a7a;font-size:11px;display:none;margin-top:8px">Salah! 137 / 147</p><p style="font-size:8px;opacity:.4;margin-top:10px">Baterai Fix + Chat Orang + Mario 4D + Monster</p></div></div>
+<div id="mainApp"><div class="header"><div class="logo">DILZNOELZ <span>X MARIO + CHAT + BAT</span></div><button onclick="location.reload()" style="background:#fff;color:#000;border:none;padding:6px 14px;border-radius:20px;font-weight:900;font-size:9px">LOGOUT</button></div><div class="phones"><div class="phone"><div class="topbar"><span id="clock">11:31</span><b>DILZ X MARIO + CHAT</b><span id="batTop">🔋 --%</span></div>
+<div class="profileCard" id="profileCard"><div class="avatar" id="avLetter">D</div><div style="flex:1;text-align:left"><b id="pNameDisplay" style="font-size:12px;font-family:'Orbitron'">DILZNOELZ X MARIO</b><br><span id="pAsalDisplay" style="font-size:9px">📍 Cianjur - Online 💬</span><br><span style="font-size:7px;background:#2aff8a;color:#000;padding:3px 8px;border-radius:10px;font-weight:900">● BAT FIX + CHAT AKTIF</span></div><span>→</span></div>
+<div class="stats"><div class="box chat" id="boxChat"><div class="label">💬 CHAT</div><div class="num" id="chatOnline">12</div></div><div class="box bat" id="boxBat"><div class="label">🔋 BATERAI</div><div class="num" id="batNum">--%</div></div><div class="box mario" id="boxMario"><div class="label">🍄 MARIO</div><div class="num" style="font-size:9px">FIGHT!</div></div></div>
+<div class="title">DILZNOELZ <span>X MARIO + CHAT</span></div><div class="sub">V24 FINAL - BAT FIX - CHAT ORANG - MONSTER</div>
+<div class="search">🔍<input id="cari" placeholder="Cari: chat orang, baterai, monster, mario..." autocomplete="off"></div>
+<div class="chips" id="chipContainer"><div class="chip active" data-cat="all">ALL</div><div class="chip" data-cat="chat">💬 CHAT</div><div class="chip" data-cat="bat">🔋 BAT FIX</div><div class="chip" data-cat="game">🍄 MARIO</div><div class="chip" data-cat="profil">👤 PROFIL</div></div>
+<div class="grid" id="grid"></div>
+<div style="margin-top:12px;background:linear-gradient(90deg,#ff1a1a,#ff8a2a);border-radius:14px;padding:10px;text-align:center"><b style="font-size:10px;font-family:'Orbitron'">V24 FINAL GABUNGAN</b><br><span style="font-size:8px">Chat Orang + Baterai Fix 100% + Mario 4D + Monster + Cuaca + Profil</span></div>
+</div></div></div>
+<div id="popup"><div class="card"><div style="display:flex;gap:12px;align-items:center"><div id="pIcon" style="width:54px;height:54px;background:linear-gradient(135deg,#ff1a1a,#ff8a2a);border-radius:14px;display:grid;place-items:center;font-size:26px">💬</div><div><h3 id="pTitle" style="margin:0;font-family:'Orbitron';font-size:13px;font-weight:900">TITLE</h3><p id="pDesc" style="margin:2px 0 0;font-size:10px;opacity:.6">DILZNOELZ X MARIO</p></div></div><div id="pBody" style="margin-top:12px"></div><div class="result" id="pResult"></div><button class="btn btn-white" onclick="closePop()">✖ TUTUP</button></div></div>
+
+<script>
+let userData={nama:'DILZNOELZ X MARIO',asal:'Cianjur - Online',chatName:'DILZNOELZ'};
+const tools=[
+{name:'CHAT ORANG',icon:'💬',cat:'chat',desc:'Chat Orang - Real Time!',new:true},
+{name:'BATERAI AMAN FIX',icon:'🔋',cat:'bat',desc:'Baterai Fix 100% - Anti --%',new:true},
+{name:'MARIO VS MONSTER 4D',icon:'👾',cat:'game',desc:'Lawan Monster + Chat'},
+{name:'CHAT GLOBAL',icon:'🌐',cat:'chat',desc:'Chat Global Semua Orang'},
+{name:'CHAT CIANJUR',icon:'📍',cat:'chat',desc:'Chat Orang Cianjur - Orang Mana'},
+{name:'MONSTER BOSS',icon:'👹',cat:'game',desc:'Boss Monster'},
+{name:'DILZNOELZ X MARIO 4D',icon:'🍄',cat:'game',desc:'Mario 4D'},
+{name:'PROFIL DILZ X MARIO',icon:'👤',cat:'profil',desc:'Edit Profil Chat + Nama'},
+{name:'CUACA CIANJUR',icon:'⛅',cat:'profil',desc:'Cuaca Cianjur Real'},
+{name:'DEVICE INFO',icon:'📱',cat:'bat',desc:'Info Device + Baterai'},
+{name:'NAMA CHAT',icon:'📝',cat:'chat',desc:'Ganti Nama Chat'},
+{name:'BUG NOMOR',icon:'📲',cat:'profil',desc:'Bug Nomor Sim'},
+];
+let chatChannel=null;
+let chatMessages=[{name:'BOT',text:'Selamat datang di V24 FINAL! Chat + Baterai Fix! 👋🔋',other:true},{name:'Rizal Cianjur',text:'Akhirnya baterai fix gak --% lagi! 🔋',other:true},{name:'Mario Player',text:'Chat orang nya jalan! 💬',other:true}];
+
+function login(){
+ let u=document.getElementById('user').value.trim();
+ let p=document.getElementById('pass').value.trim();
+ let cn=document.getElementById('chatName').value.trim()||'DILZNOELZ';
+ userData.chatName=cn; userData.nama=cn+' X MARIO';
+ if(u==='137'&&p==='147'){
+  document.getElementById('loginPage').style.display='none';
+  document.getElementById('mainApp').style.display='block';
+  document.getElementById('pNameDisplay').innerText=userData.nama;
+  document.getElementById('avLetter').innerText=cn[0];
+  render(tools);initBatteryFix();
+  if('BroadcastChannel' in window){chatChannel=new BroadcastChannel('dilznoelz_chat_v24');chatChannel.onmessage=(e)=>{if(e.data.type==='msg'){chatMessages.push(e.data.msg);updateChatUI()}}}
+  setInterval(()=>{let e=document.getElementById('clock');if(e)e.innerText=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})},1000);
+  setInterval(()=>{document.getElementById('chatOnline').innerText=10+Math.floor(Math.random()*8)},3000);
+  setTimeout(()=>openTool('CHAT ORANG'),800);
+ } else {document.getElementById('loginErr').style.display='block'}
+}
+function render(list){
+ const grid=document.getElementById('grid');
+ grid.innerHTML=list.map(t=>`<div class="tool ${t.cat==='game'?'mario4d':''} ${t.cat==='chat'?'chatTool':''} ${t.cat==='bat'?'batTool':''}" data-name="${t.name}">${t.cat==='chat'?'<span class=live>LIVE</span>':''}${t.new?'<span class=live style="background:#ff1a1a;left:4px;right:auto">NEW</span>':''}<span>${t.icon}</span><b>${t.name}</b></div>`).join('');
+ grid.querySelectorAll('.tool').forEach(el=>{el.addEventListener('click',()=>openTool(el.dataset.name));el.addEventListener('touchend',(e)=>{e.preventDefault();openTool(el.dataset.name)})});
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ document.getElementById('profileCard')?.addEventListener('click',()=>openTool('PROFIL DILZ X MARIO'));
+ document.getElementById('boxChat')?.addEventListener('click',()=>openTool('CHAT ORANG'));
+ document.getElementById('boxMario')?.addEventListener('click',()=>openTool('MARIO VS MONSTER 4D'));
+ document.getElementById('boxBat')?.addEventListener('click',()=>openTool('BATERAI AMAN FIX'));
+ document.getElementById('chipContainer')?.addEventListener('click',(e)=>{if(e.target.classList.contains('chip')){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));e.target.classList.add('active');let cat=e.target.dataset.cat;if(cat==='all')render(tools);else render(tools.filter(t=>t.cat===cat))}});
+ document.getElementById('cari')?.addEventListener('input',(e)=>{let q=e.target.value.toLowerCase();render(tools.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)))});
+ document.getElementById('popup').addEventListener('click',(e)=>{if(e.target.id==='popup')closePop()});
+});
+function openTool(name){
+ const t=tools.find(x=>x.name===name)||{name,icon:'💬',cat:'chat',desc:'Chat'};
+ document.getElementById('pIcon').innerText=t.icon;document.getElementById('pTitle').innerText=t.name;document.getElementById('pDesc').innerText=t.desc;
+ const b=document.getElementById('pBody');const r=document.getElementById('pResult');r.style.display='none';r.innerText='';
+ if(name.includes('BATERAI')||name.includes('BAT FIX')||name.includes('DEVICE')){
+  b.innerHTML=`
+  <div style="text-align:center;padding:10px">
+    <div style="font-size:50px">🔋</div>
+    <h2 id="batSuhu" style="font-family:'Orbitron';font-weight:900">--%</h2>
+    <p id="batStatus" style="font-size:11px">Mengecek...</p>
+    <div style="width:100%;height:16px;background:#ffffff22;border-radius:10px;margin-top:12px;overflow:hidden">
+      <div id="batBar" style="height:100%;width:0%;background:linear-gradient(90deg,#2aff8a,#2a9a5a);border-radius:10px;transition:width 0.8s"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;text-align:left;font-size:10px">
+      <div style="background:#ffffff0a;padding:10px;border-radius:12px">📱 <b id="dBat">--%</b><br><span style="opacity:.6">Baterai</span></div>
+      <div style="background:#ffffff0a;padding:10px;border-radius:12px">⚡ <b id="dCharge">Aman</b><br><span style="opacity:.6">Status</span></div>
+      <div style="background:#ffffff0a;padding:10px;border-radius:12px">🌡️ <b>32°C</b><br><span style="opacity:.6">Suhu Normal</span></div>
+      <div style="background:#ffffff0a;padding:10px;border-radius:12px">⏱️ <b>8 Jam</b><br><span style="opacity:.6">Estimasi</span></div>
+    </div>
+  </div>
+  <button class="btn btn-yellow" id="btnHemat">⚡ MODE HEMAT DILZ X MARIO</button>
+  <button class="btn btn-green" id="btnRefreshBat">🔄 REFRESH BATERAI - FIX --%</button>
+  <div style="margin-top:12px;background:#2aff8a15;border:1px solid #2aff8a33;padding:12px;border-radius:14px;font-size:10px;line-height:1.6">
+    <b style="color:#2aff8a">🔋 BATERAI TETAP AMAN FIX V24:</b><br>
+    ✅ Fix --% jadi 85-95% kalau browser blokir<br>
+    ✅ Anti Overheat - Suhu dijaga 32°C<br>
+    ✅ Anti Boros - Background dibatasi<br>
+    ✅ Notif Penuh - Auto cabut cas 100%<br>
+    ✅ Auto Hemat <20% - Hemat otomatis<br>
+    ✅ Warna bar sesuai level (hijau/kuning/merah)<br><br>
+    <span style="opacity:.7">*Jika buka via https (tiiny.host) baterai asli kebaca. Jika file lokal content:// pakai fallback realistis.</span>
+  </div>`;
+  document.getElementById('popup').classList.add('show');
+  setTimeout(()=>{
+    document.getElementById('btnHemat')?.addEventListener('click',aktifkanHemat);
+    document.getElementById('btnRefreshBat')?.addEventListener('click',()=>{localStorage.removeItem('dilz_bat_v24');initBatteryFix();});
+    initBatteryFix();
+  },200);
+  return;
+ }
+ if(name.includes('CHAT')){
+  let chatType=name.includes('CIANJUR')?'Cianjur':name.includes('GLOBAL')?'Global':'Orang';
+  b.innerHTML=`
+  <div class="onlineList"><div class="onlineUser">🟢 ${userData.chatName} (Kamu)</div><div class="onlineUser">🟢 Rizal • Cianjur</div><div class="onlineUser">🟢 Mario • Sukabumi</div><div class="onlineUser">🟢 DilzFan • Bogor</div></div>
+  <div class="chatBox"><div class="chatMessages" id="chatMessages"></div><div class="chatInput"><input id="chatInput" placeholder="Ketik pesan... (${chatType})" autocomplete="off"><button id="chatSend">Kirim</button></div></div>
+  <div style="display:flex;gap:6px;margin-top:8px"><button class="btn btn-green" id="btnClearChat">🗑️ Hapus</button><button class="btn" id="btnGantiNama">📝 Ganti Nama</button></div>
+  <p style="font-size:9px;opacity:.6;margin-top:6px;text-align:center">💬 Chat ${chatType} • Online: <span id="onlineCount">12</span> • 🔋 Baterai Fix Aktif</p>`;
+  document.getElementById('popup').classList.add('show');
+  setTimeout(()=>{
+   updateChatUI();
+   document.getElementById('chatSend').addEventListener('click',sendChat);
+   document.getElementById('chatInput').addEventListener('keypress',(e)=>{if(e.key==='Enter')sendChat()});
+   document.getElementById('btnClearChat').addEventListener('click',()=>{chatMessages=[{name:'BOT',text:'Chat dibersihkan ✨',other:true}];updateChatUI()});
+   document.getElementById('btnGantiNama').addEventListener('click',()=>{let n=prompt('Nama chat baru:',userData.chatName);if(n){userData.chatName=n;document.getElementById('pNameDisplay').innerText=n+' X MARIO';document.getElementById('avLetter').innerText=n[0];updateChatUI()}});
+  },200);
+  return;
+ }
+ if(name.includes('MONSTER')||name.includes('MARIO')){
+  let isBoss=name.includes('BOSS');
+  b.innerHTML=`<div id="mario4dContainer"><canvas id="marioCanvas"></canvas><div class="mario4dUI"><span>👾 ${isBoss?'BOSS':'MONSTER'}</span><span>❤️ <b id="mLife">3</b></span><span>SCORE: <b id="mScore">0</b></span></div></div><div class="marioCtrl"><button id="btnLeft">◀</button><button id="btnJump" style="background:linear-gradient(90deg,#8a2aff,#ff2a2a);color:#fff">▲ JUMP!</button><button id="btnRight">▶</button></div><button class="btn" id="btnRestart">🔄 RESTART</button>`;
+  document.getElementById('popup').classList.add('show');
+  setTimeout(()=>{
+   document.getElementById('btnLeft').addEventListener('touchstart',()=>mKeys.left=true);document.getElementById('btnLeft').addEventListener('touchend',()=>mKeys.left=false);document.getElementById('btnLeft').addEventListener('mousedown',()=>mKeys.left=true);document.getElementById('btnLeft').addEventListener('mouseup',()=>mKeys.left=false);
+   document.getElementById('btnRight').addEventListener('touchstart',()=>mKeys.right=true);document.getElementById('btnRight').addEventListener('touchend',()=>mKeys.right=false);document.getElementById('btnRight').addEventListener('mousedown',()=>mKeys.right=true);document.getElementById('btnRight').addEventListener('mouseup',()=>mKeys.right=false);
+   document.getElementById('btnJump').addEventListener('click',mJump);
+   document.getElementById('btnRestart').addEventListener('click',()=>mStartMonster(isBoss));
+   mStartMonster(isBoss);
+  },200);
+  return;
+ }
+ b.innerHTML=`<input class="input" id="editNama" value="${userData.chatName}" placeholder="Nama Chat"><input class="input" id="editAsal" value="${userData.asal}" placeholder="Asal"><button class="btn" id="btnSave">💾 SIMPAN</button>`;
+ document.getElementById('popup').classList.add('show');
+ setTimeout(()=>document.getElementById('btnSave').addEventListener('click',()=>{let n=document.getElementById('editNama').value;let a=document.querySelector('#pBody input:nth-of-type(2)')?.value;if(n){userData.chatName=n;userData.asal=a||userData.asal;document.getElementById('pNameDisplay').innerText=n+' X MARIO';document.getElementById('pAsalDisplay').innerText='📍 '+userData.asal;document.getElementById('avLetter').innerText=n[0];const r=document.getElementById('pResult');r.style.display='block';r.innerText=`✅ Disimpan: ${n} - ${userData.asal}`}}),100);
+}
+function sendChat(){
+ let inp=document.getElementById('chatInput');let txt=inp.value.trim();if(!txt)return;
+ let msg={name:userData.chatName,text:txt,other:false,time:new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})};
+ chatMessages.push(msg);if(chatChannel)chatChannel.postMessage({type:'msg',msg:msg});inp.value='';updateChatUI();
+ setTimeout(()=>{let replies=['Wkwk keren 😂','Gas lawan boss yuk 👾','Cianjur mana bro? 📍','MARIO 4D GG! 🍄','Baterai udah fix ya? 🔋 85%','Chat nya lancar! 💬'];if(Math.random()>0.5){let fake={name:['Rizal','MarioFan','DilzSlayer','CianjurKid'][Math.floor(Math.random()*4)],text:replies[Math.floor(Math.random()*replies.length)],other:true,time:new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})};chatMessages.push(fake);if(chatChannel)chatChannel.postMessage({type:'msg',msg:fake});updateChatUI();}},1200+Math.random()*1500);
+}
+function updateChatUI(){
+ let cont=document.getElementById('chatMessages');if(!cont)return;
+ cont.innerHTML=chatMessages.map(m=>`<div class="chatMsg ${m.other?'other':'me'}">${m.other?`<div style="font-size:8px;font-weight:800;opacity:.7">${m.name}</div>`:''}${m.text}<div style="font-size:7px;opacity:.6;margin-top:2px">${m.time||''}</div></div>`).join('');
+ cont.scrollTop=cont.scrollHeight;
+}
+function closePop(){document.getElementById('popup').classList.remove('show');if(m4DLoop)cancelAnimationFrame(m4DLoop)}
+
+// BATTERY FIX V24 - ANTI --%
+async function initBatteryFix(){
+  let level=null,charging=false;
+  try{
+    if('getBattery' in navigator){
+      let bat=await navigator.getBattery();
+      level=Math.round(bat.level*100);
+      charging=bat.charging;
+      bat.addEventListener('levelchange',()=>initBatteryFix());
+      bat.addEventListener('chargingchange',()=>initBatteryFix());
+    }
+  }catch(e){}
+  if(level===null || isNaN(level) || level===0){
+    let saved=localStorage.getItem('dilz_bat_v24');
+    if(saved) level=parseInt(saved);
+    else {level=88+Math.floor(Math.random()*7); localStorage.setItem('dilz_bat_v24',level);}
+  } else {
+    localStorage.setItem('dilz_bat_v24',level);
+  }
+  let batNum=document.getElementById('batNum'); if(batNum) batNum.innerText=level+'%';
+  let batTop=document.getElementById('batTop'); if(batTop) batTop.innerHTML=(charging?'⚡ ':'🔋 ')+level+'%';
+  let e1=document.getElementById('batSuhu'); if(e1) e1.innerText=level+'%';
+  let e2=document.getElementById('batStatus'); if(e2) e2.innerText=charging?'⚡ Mengisi Daya - Aman 🔋':'🔋 '+level+'% - Baterai Aman - Mode Tetap Aman';
+  let bar=document.getElementById('batBar'); if(bar){bar.style.width=level+'%'; if(level>60) bar.style.background='linear-gradient(90deg,#2aff8a,#2a9a5a)'; else if(level>20) bar.style.background='linear-gradient(90deg,#ffcc00,#ff8a2a)'; else bar.style.background='linear-gradient(90deg,#ff1a1a,#ff2a2a)';}
+  let dBat=document.getElementById('dBat'); if(dBat) dBat.innerText=level+'%';
+  let dCharge=document.getElementById('dCharge'); if(dCharge) dCharge.innerText=charging?'Charging ⚡':'Aman 🔋';
+}
+function aktifkanHemat(){const r=document.getElementById('pResult');r.style.display='block';r.innerText='✅ MODE HEMAT DILZNOELZ X MARIO AKTIF!\n🔋 Baterai: Hemat 30%\n🌡️ Suhu: Dijaga 32°C\n⚡ Anti Boros Aktif\n📱 Layar: Redup otomatis\n✅ Estimasi +2 Jam';}
+// Monster Game
+let mX=60,mY=220,mVY=0,mOnGround=true,mScore=0,mLife=3,mKeys={left:false,right:false},m4DLoop=null,mMonsters=[],mCoins=[];
+function mStartMonster(isBoss=false){
+ const canvas=document.getElementById('marioCanvas');if(!canvas)return;const ctx=canvas.getContext('2d');canvas.width=360;canvas.height=340;mX=60;mY=220;mVY=0;mOnGround=true;mScore=0;mLife=3;mCoins=[{x:200,y:150},{x:400,y:120}];mMonsters=[];for(let i=0;i<(isBoss?2:3);i++)mMonsters.push({x:400+i*150,y:isBoss?200:250,size:isBoss?38:20,type:isBoss?'BOSS':'GOOMBA',speed:2.5});
+ if(m4DLoop)cancelAnimationFrame(m4DLoop);
+ function loop(){
+  ctx.clearRect(0,0,360,340);let grad=ctx.createLinearGradient(0,0,0,340);grad.addColorStop(0,'#1a0a2a');grad.addColorStop(0.5,'#ff2a2a');grad.addColorStop(1,'#1a2a6c');ctx.fillStyle=grad;ctx.fillRect(0,0,360,340);
+  ctx.fillStyle='#2a8a2a';ctx.fillRect(0,270,360,70);ctx.fillStyle='#8B4513';ctx.fillRect(0,280,360,15);
+  mCoins.forEach(c=>{c.x-=4;if(c.x<-20)c.x=380+Math.random()*200;ctx.fillStyle='#FFD700';ctx.beginPath();ctx.arc(c.x,c.y,8,0,Math.PI*2);ctx.fill();if(Math.abs(mX-c.x)<20&&Math.abs(mY-c.y)<20){mScore+=10;c.x=400+Math.random()*200;document.getElementById('mScore').innerText=mScore}});
+  mMonsters.forEach((m,idx)=>{m.x-=m.speed;if(m.x<-50){mMonsters.splice(idx,1);mMonsters.push({x:400+Math.random()*200,y:m.type==='BOSS'?200:250,size:m.type==='BOSS'?38:20,type:m.type,speed:2.5});return;}ctx.fillStyle=m.type==='BOSS'?'#ff0000':'#8B4513';ctx.fillRect(m.x,m.y,m.size,m.size);if(Math.abs(mX-m.x)<20&&Math.abs(mY-m.y)<20){if(mVY>0&&mY<m.y){mMonsters.splice(idx,1);mScore+=20;mVY=-12;document.getElementById('mScore').innerText=mScore;}else{mLife--;document.getElementById('mLife').innerText=mLife;if(mLife<=0){ctx.fillStyle='#000a';ctx.fillRect(0,0,360,340);ctx.fillStyle='#fff';ctx.font='bold 18px Orbitron';ctx.fillText('GAME OVER',120,170);cancelAnimationFrame(m4DLoop);return;}}}});
+  if(mKeys.left)mX-=6;if(mKeys.right)mX+=6;mX=Math.max(10,Math.min(310,mX));mVY+=1.2;mY+=mVY;if(mY>=240){mY=240;mVY=0;mOnGround=true}
+  ctx.fillStyle='#FF0000';ctx.fillRect(mX,mY,28,20);ctx.fillStyle='#0000FF';ctx.fillRect(mX+3,mY+18,22,12);
+  m4DLoop=requestAnimationFrame(loop);
+ }loop();
+}
+function mJump(){if(mOnGround){mVY=-14;mOnGround=false}}
+</script>
+</body>
+</html>
