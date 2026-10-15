@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ V34 BEAUTIFUL FIXED</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box;margin:0;padding:0}
+body{background:#060817;color:#fff;min-height:100vh}
+.bg{position:fixed;inset:0;background:radial-gradient(1000px 500px at 20% -10%,#ff1a1a35,#7a1aff28,#060817 70%);z-index:-2}
+.header{position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(0,0,0,0.85);border-bottom:2px solid #ff2a2a66}
+.logo{font-family:'Orbitron';font-weight:900;font-size:11px}.logo span{color:#ff2a2a}
+.wrap{max-width:460px;margin:0 auto;padding:10px}
+.main{background:linear-gradient(180deg,#1e1548f5,#0f1330f5);border-radius:28px;border:2px solid rgba(255,42,42,0.5);box-shadow:0 0 40px rgba(255,42,42,0.25);padding:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:2px;min-height:300px}
+.tool{border-radius:18px;padding:13px 4px;text-align:center;cursor:pointer;background:linear-gradient(180deg,rgba(255,255,255,0.11),rgba(255,255,255,0.04));border:1px solid rgba(255,255,255,0.12);min-height:78px}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="header"><div class="logo">🍄 DILZNOELZ <span>V34 BEAUTIFUL FIXED</span></div></div>
+<div class="wrap"><div class="main">
+<div id="grid"></div>
+</div></div>
+<script>
+var tools=[
+{name:'MARIO 10D ULTRA',icon:'🍄',cat:'game',top:true,cls:'mario10d'},
+{name:'MARIO BOSS RUSH',icon:'👹',cat:'game',top:true,cls:'mario10d'},
+{name:'MARIO KART 10D',icon:'🏎️',cat:'game',top:true,cls:'mario10d'},
+{name:'HD PHOTO PRO',icon:'🖼️',cat:'hd',hd:true,cls:'hd'},
+{name:'SSS TIKTOK HD',icon:'⬇️',cat:'down',down:true,cls:'tik'},
+{name:'ALIGHT MOTION PACK',icon:'🎬',cat:'alight',am:true,cls:'alight'},
+{name:'SHAKE CC PRO',icon:'🌀',cat:'alight',am:true,cls:'alight'},
+{name:'CC AESTHETIC HD',icon:'🎨',cat:'alight',am:true,cls:'alight'},
+];
+function render(list){
+var grid=document.getElementById('grid');
+grid.innerHTML=list.map(function(t){
+return '<div class="tool '+t.cls+'" style="padding:20px"><span style="font-size:24px">'+t.icon+'</span><br><b style="font-size:6px">'+t.name+'</b></div>';
+}).join('');
+}
+window.addEventListener('DOMContentLoaded',function(){render(tools)});
+</script>
+</body>
+</html>
