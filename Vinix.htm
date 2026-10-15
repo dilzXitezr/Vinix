@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ V12 REMINI CLONE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#050507;color:#fff;display:flex;flex-direction:column;min-height:100vh}
+.header{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;background:#0c0c12;border-bottom:1px solid #222;position:sticky;top:0;z-index:9}
+.tabs{display:flex;gap:6px;padding:8px;background:#0c0c12;overflow-x:auto}
+.chip{padding:6px 12px;border-radius:20px;background:#1e1e28;border:1px solid #333;font-size:10px;white-space:nowrap}
+.chip.active{background:#fff;color:#000;font-weight:800}
+.grid{padding:10px}
+.row-title{display:flex;justify-content:space-between;align-items:center;margin:12px 0 8px}
+.grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.card{border-radius:14px;overflow:hidden;aspect-ratio:3/4;background:#1a1a22;position:relative}
+.card img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;bottom:4px;left:4px;background:#0008;padding:2px 6px;border-radius:8px;font-size:8px}
+.btn-putih{background:#fff;color:#000;border:none;padding:6px 14px;border-radius:20px;font-weight:800;font-size:11px}
+.before-after{position:relative;width:100%;height:72vh;overflow:hidden;background:#111}
+.before-after img{width:100%;height:100%;object-fit:cover}
+.divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;z-index:2}
+.handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;z-index:3;font-size:12px}
+.menu-list{padding:12px}
+.item{display:flex;gap:12px;align-items:center;background:#14141c;border:1px solid #222;border-radius:14px;padding:10px;margin-bottom:8px}
+.item img{width:44px;height:44px;border-radius:10px;object-fit:cover}
+.item b{font-size:12px} .item p{font-size:9px;opacity:.6;margin:2px 0 0}
+.screen{display:none} .screen.active{display:block}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#0c0c12;border-top:1px solid #222;display:flex;justify-content:space-around;padding:10px}
+</style>
+</head>
+<body>
+<div class="header">
+<b>DILZNOELZ <span style="color:#a855f7">REMINI</span> V12</b>
+<div style="display:flex;gap:8px"><a href="https://whatsapp.com/channel/0029VbCjEsCLNSZwGjAsEn1P"><button style="background:#fff;color:#000;border:none;padding:6px 12px;border-radius:20px;font-weight:800;font-size:11px">SALURAN</button></a></div>
+</div>
+
+<div class="tabs" id="topTabs">
+<div class="chip active" onclick="tab(0)">Modeling Photoshoot 📸</div>
+<div class="chip" onclick="tab(1)">Hasil Anime AI</div>
+<div class="chip" onclick="tab(2)">Menu Remini</div>
+<div class="chip">Aesthetic Photoshoot 🎨</div>
+<div class="chip">Spotlight Portrait</div>
+</div>
+
+<!-- SCREEN 0 : PILIH PRESET -->
+<div id="s0" class="screen active">
+<div class="grid">
+<div class="row-title"><div><b style="font-size:13px">Modeling Photoshoot 📸</b><br><span style="font-size:9px;opacity:.6">24 PHOTOS • 🔥</span></div><button class="btn-putih">Dapatkan Paket</button></div>
+<div class="grid2">
+<div class="card"><img src="https://picsum.photos/seed/m1/300"><span class="badge">MODEL 1</span></div>
+<div class="card"><img src="https://picsum.photos/seed/m2/300"><span class="badge">MODEL 2</span></div>
+<div class="card"><img src="https://picsum.photos/seed/m3/300"><span class="badge">MODEL 3</span></div>
+<div class="card"><img src="https://picsum.photos/seed/m4/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/m5/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/m6/300"></div>
+</div>
+<div class="row-title"><div><b style="font-size:13px">Aesthetic Photoshoot 🎨</b><br><span style="font-size:9px;opacity:.6">15 PHOTOS • ❤️‍🔥</span></div><button class="btn-putih">Dapatkan Paket</button></div>
+<div class="grid2">
+<div class="card"><img src="https://picsum.photos/seed/a1/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/a2/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/a3/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/a4/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/a5/300"></div>
+<div class="card"><img src="https://picsum.photos/seed/a6/300"></div>
+</div>
+</div>
+</div>
+
+<!-- SCREEN 1 : HASIL -->
+<div id="s1" class="screen">
+<div style="display:flex;justify-content:space-between;padding:10px;background:#0c0c12"><span style="font-size:11px;opacity:.6">Sebelum</span><b style="font-size:12px">Hasil</b><span style="font-size:11px;opacity:.6">Sesudah</span></div>
+<div class="before-after">
+<img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800">
+<div class="divider"></div><div class="handle">↔</div>
+</div>
+<div style="display:flex;justify-content:center;gap:40px;padding:14px"><div style="text-align:center;font-size:10px">🎨<br>Colors</div><div style="text-align:center;font-size:10px">🖼️<br>Background Enhancer</div></div>
+</div>
+
+<!-- SCREEN 2 : MENU -->
+<div id="s2" class="screen">
+<div class="menu-list">
+<b>Selamat datang di Remini</b><br><b style="font-size:16px">Apa yang membawamu kemari?</b><br><br>
+<div class="item"><img src="https://picsum.photos/seed/r1/100"><div><p>MODEL AI</p><b>Modeling Photoshoot 📸</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r2/100"><div><p>FILTER AI</p><b>AI Doll Filter</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r3/100"><div><p>FILTER AI</p><b>Generate AI Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r4/100"><div><p>PENYEMPURNAAN</p><b>Retouch your pictures ✨</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r5/100"><div><p>TINGKATKAN</p><b>Enhance Your Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r6/100"><div><p>KEPERLUAN</p><b>Fix Blurry Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r7/100"><div><p>TINGKATKAN</p><b>Restore Old Photos</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r8/100"><div><p>FOTO PASANGAN</p><b>AI Couples</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><img src="https://picsum.photos/seed/r9/100"><div><p>FILTER AI</p><b>AI Los Angeles Filter</b></div><span style="margin-left:auto">›</span></div>
+<div class="item"><div style="width:44px;height:44px;border-radius:10px;background:#222;display:grid;place-items:center">⊘</div><div><b>None of These</b></div><span style="margin-left:auto">›</span></div>
+</div>
+</div>
+
+<div class="bottom">
+<div onclick="tab(0)">🏠<br><span style="font-size:9px">Preset</span></div>
+<div onclick="tab(1)">✨<br><span style="font-size:9px">Hasil</span></div>
+<div onclick="tab(2)">☰<br><span style="font-size:9px">Menu</span></div>
+</div>
+
+<script>
+function tab(n){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s'+n).classList.add('active');
+document.querySelectorAll('.chip').forEach((c,i)=>c.classList.toggle('active',i===n));
+}
+</script>
+</body>
+</html>
