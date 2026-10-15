@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X-FAR V20 MARIO 4D - DILZNOELZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#070a1a;color:#fff;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% -10%,#1e2f6a,#070a1a 70%);z-index:-1}
+.header{padding:12px;display:flex;justify-content:space-between;align-items:center;background:#000a;border-bottom:1px solid #ffffff18;position:sticky;top:0;z-index:50}
+.phones{max-width:430px;margin:auto;padding:12px}
+.phone{background:linear-gradient(180deg,#121a36,#0a0e1f);border-radius:32px;border:3px solid #ff5a2a;box-shadow:0 0 40px #ff5a2a88;padding:12px}
+.topbar{display:flex;justify-content:space-between;padding:6px 4px;font-size:10px}
+.topbar b{background:#ff5a2a;color:#fff;padding:5px 14px;border-radius:20px;font-family:'Orbitron';font-size:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0}
+.box{background:linear-gradient(135deg,#d8e2ff,#8aa0ff);color:#000;border-radius:14px;padding:8px;text-align:center;cursor:pointer}
+.box.dark{background:linear-gradient(135deg,#1e2d6a,#4a6aff);color:#fff}
+.box.mario{background:linear-gradient(135deg,#ff8a2a,#ff2a2a);color:#fff;animation:glow 1.5s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 10px #ff5a2a}50%{box-shadow:0 0 25px #ff5a2a}}
+.box.green{background:linear-gradient(135deg,#2aff8a,#2a9a5a);color:#000}
+.num{font-family:'Orbitron';font-size:16px;font-weight:800}.label{font-size:7px;font-weight:700}
+.title{text-align:center;font-family:'Orbitron';font-size:14px;margin:12px 0 2px}.sub{text-align:center;font-size:8px;opacity:.5;letter-spacing:2px;margin-bottom:8px}
+.search{display:flex;align-items:center;background:#0006;border:1px solid #ffffff22;border-radius:12px;padding:10px;gap:8px;margin:8px 0}
+.search input{background:transparent;border:none;color:#fff;width:100%;font-size:12px;outline:none}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.chip{padding:6px 12px;border-radius:20px;font-size:9px;white-space:nowrap;border:1px solid #ffffff22;background:#ffffff0a;cursor:pointer}
+.chip.active{background:#ff5a2a;color:#fff;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.tool{background:linear-gradient(180deg,#ffffff14,#ffffff06);border:1px solid #ffffff18;border-radius:14px;padding:10px 4px;text-align:center;cursor:pointer}
+.tool.mario4d{border-color:#ff5a2a;background:linear-gradient(180deg,#ff5a2a33,#ff2a2a11);box-shadow:0 0 15px #ff5a2a66}
+.tool span{font-size:18px;display:block}.tool b{font-size:6px;display:block;margin-top:4px}
+.profileCard{background:linear-gradient(135deg,#ff5a2a,#ff2a2a);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center;margin:10px 0}
+.avatar{width:50px;height:50px;background:#fff;color:#ff2a2a;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:800}
+.input{width:100%;background:#0006;border:1px solid #ffffff22;border-radius:12px;padding:12px;color:#fff;font-size:12px;margin:6px 0;outline:none}
+.btn{width:100%;background:linear-gradient(90deg,#ff5a2a,#ff2a2a);color:#fff;border:none;padding:12px;border-radius:12px;font-weight:800;cursor:pointer;margin-top:6px}
+.btn-white{background:#fff;color:#000}
+.result{background:#0006;border:1px dashed #ff5a2a55;border-radius:12px;padding:10px;margin-top:10px;font-size:11px;display:none;white-space:pre-wrap;word-break:break-all}
+#loginPage{position:fixed;inset:0;background:radial-gradient(circle at 50% 0%,#1e2f6a,#070a1a);display:grid;place-items:center;z-index:9999;padding:20px}
+.loginCard{background:linear-gradient(180deg,#1b2450,#121832);border:2px solid #ff5a2a88;border-radius:24px;padding:22px;width:100%;max-width:340px;box-shadow:0 0 60px #ff5a2a66;text-align:center}
+#mainApp{display:none}
+#popup{position:fixed;inset:0;background:#000e;backdrop-filter:blur(14px);display:none;place-items:center;z-index:999;padding:8px}
+#popup.show{display:grid}
+.card{background:linear-gradient(180deg,#1b2450,#11182f);border:2px solid #ff5a2a88;border-radius:24px;padding:12px;width:100%;max-width:420px;max-height:96vh;overflow-y:auto;box-shadow:0 0 60px #ff5a2a66}
+#mario4dContainer{width:100%;height:380px;border-radius:16px;overflow:hidden;border:3px solid #ff5a2a;position:relative;background:#000}
+#marioCanvas{width:100%;height:100%;display:block}
+.mario4dUI{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;font-family:'Orbitron';font-size:10px;pointer-events:none}
+.marioCtrl{display:flex;gap:8px;margin-top:8px}
+.marioCtrl button{flex:1;background:#fff;color:#000;border:none;padding:14px;border-radius:12px;font-weight:800;cursor:pointer;font-size:16px;box-shadow:0 4px 0 #0004}
+.marioCtrl button:active{transform:translateY(3px);box-shadow:none}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div id="loginPage"><div class="loginCard"><div style="width:70px;height:70px;background:linear-gradient(135deg,#ff5a2a,#ff2a2a);border-radius:18px;display:grid;place-items:center;margin:0 auto 12px;font-size:32px;animation:glow 1s infinite">🍄</div><h2 style="font-family:'Orbitron';margin:0">X-FAR V20</h2><p style="font-size:9px;opacity:.7;margin:6px 0 14px;letter-spacing:2px;color:#ff8a2a">MARIO 4D ULTIMATE - DILZNOELZ</p><input class="input" id="user" value="137"><input class="input" id="pass" type="password" value="147"><button class="btn" onclick="login()">🍄 MASUK MARIO 4D</button><p id="loginErr" style="color:#ff5a7a;font-size:11px;display:none;margin-top:8px">Salah! 137 / 147</p></div></div>
+<div id="mainApp"><div class="header"><b>X-FAR × <span style="color:#ff5a2a">V20 MARIO 4D</span></b><button onclick="location.reload()" style="background:#fff;color:#000;border:none;padding:6px 14px;border-radius:20px;font-weight:800;font-size:10px">LOGOUT</button></div><div class="phones"><div class="phone"><div class="topbar"><span id="clock">11:10</span><b style="background:#ff5a2a;color:#fff">MARIO 4D</b><span id="batTop">🔋 --%</span></div>
+<div class="profileCard" onclick="openTool('PROFIL USER')"><div class="avatar" id="avLetter">D</div><div style="flex:1;text-align:left"><b id="pNameDisplay" style="font-size:13px">DILZNOELZ</b><br><span id="pAsalDisplay" style="font-size:9px">📍 Cianjur, Jawa Barat</span><br><span style="font-size:8px;background:#fff;color:#ff2a2a;padding:2px 6px;border-radius:10px;font-weight:800">MARIO 4D PLAYER</span></div><span>→</span></div>
+<div class="stats"><div class="box dark" onclick="openTool('CUACA')"><div class="label">⛅ CUACA</div><div class="num" id="cuacaNum">--°</div></div><div class="box green" onclick="openTool('BATERAI AMAN')"><div class="label">🔋 BAT</div><div class="num" id="batNum">--%</div></div><div class="box mario" onclick="openTool('MARIO 4D')"><div class="label">🍄 MARIO 4D</div><div class="num" style="font-size:10px">PLAY 4D</div></div></div>
+<div class="title">MARIO 4D CONTROL CENTER</div><div class="sub">V20 - MARIO 4D + 50 FITUR - DILZNOELZ EDITION</div>
+<div class="search">🔍<input id="cari" placeholder="Cari: mario 4d, cuaca, profil, baterai..." oninput="filterTools()"></div>
+<div class="chips"><div class="chip active" onclick="cat('all',this)">ALL 50</div><div class="chip" onclick="cat('game',this)">🍄 MARIO 4D</div><div class="chip" onclick="cat('profil',this)">👤 PROFIL</div><div class="chip" onclick="cat('cuaca',this)">⛅ CUACA</div><div class="chip" onclick="cat('bat',this)">🔋 BAT</div></div>
+<div class="grid" id="grid"></div>
+</div></div></div>
+<div id="popup" onclick="if(event.target==this)closePop()"><div class="card"><div style="display:flex;gap:12px;align-items:center"><div id="pIcon" style="width:50px;height:50px;background:linear-gradient(135deg,#ff5a2a,#ff2a2a);border-radius:14px;display:grid;place-items:center;font-size:24px">🍄</div><div><h3 id="pTitle" style="margin:0;font-family:'Orbitron';font-size:14px">TITLE</h3><p id="pDesc" style="margin:2px 0 0;font-size:10px;opacity:.6">desc</p></div></div><div id="pBody" style="margin-top:12px"></div><div class="result" id="pResult"></div><button class="btn btn-white" style="margin-top:10px" onclick="closePop()">Tutup</button></div></div>
+
+<script>
+let userData={nama:'DILZNOELZ',asal:'Cianjur, Jawa Barat',kota:'Cianjur',prov:'Jawa Barat'};
+function login(){let u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value.trim();if(u==='137'&&p==='147'){document.getElementById('loginPage').style.display='none';document.getElementById('mainApp').style.display='block';render(tools);initBattery();initCuaca();setInterval(()=>{let e=document.getElementById('clock');if(e)e.innerText=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})},1000);setTimeout(()=>openTool('MARIO 4D'),600)}else{document.getElementById('loginErr').style.display='block'}}
+const tools=[
+{name:'MARIO 4D',icon:'🍄',cat:'game',desc:'Mario 4D Ultra - Three.js',new:true},
+{name:'MARIO 4D RUN',icon:'🌟',cat:'game',desc:'Mario 4D Runner - Depth Effect',new:true},
+{name:'MARIO 3D',icon:'🏃',cat:'game',desc:'Classic Mario 3D'},
+{name:'PROFIL USER',icon:'👤',cat:'profil',desc:'Edit Profil & Nama'},
+{name:'ORANG MANA',icon:'📍',cat:'profil',desc:'Asal Daerah'},
+{name:'CUACA',icon:'⛅',cat:'cuaca',desc:'Cuaca Real Time'},
+{name:'BATERAI AMAN',icon:'🔋',cat:'bat',desc:'Baterai Aman'},
+{name:'DEVICE INFO',icon:'📱',cat:'bat',desc:'Info Device'},
+{name:'BUG NOMOR',icon:'📲',cat:'bat',desc:'Bug Nomor Sim'},
+{name:'QRIS SCAN',icon:'📷',cat:'cuaca',desc:'Scan QRIS'},
+{name:'NAMA USER',icon:'📝',cat:'profil',desc:'Ganti Nama'},
+{name:'DANA-CEK',icon:'💳',cat:'profil',desc:'Dana'},
+];
+function render(list){document.getElementById('grid').innerHTML=list.map(t=>`<div class="tool ${t.cat==='game'?'mario4d':''}" onclick="openTool('${t.name}')">${t.new?'<div class=newBadge>4D</div>':''}<span>${t.icon}</span><b>${t.name}</b></div>`).join('')}
+function openTool(name){
+ const t=tools.find(x=>x.name===name)||{name,icon:'🚀',cat:'util',desc:'Tools'};
+ document.getElementById('pIcon').innerText=t.icon;document.getElementById('pTitle').innerText=t.name;document.getElementById('pDesc').innerText=t.desc;
+ const b=document.getElementById('pBody');const r=document.getElementById('pResult');r.style.display='none';
+ if(name.includes('MARIO 4D')){
+  b.innerHTML=`
+  <div id="mario4dContainer">
+    <canvas id="marioCanvas"></canvas>
+    <div class="mario4dUI"><span>🍄 MARIO 4D</span><span>SCORE: <b id="mScore">0</b></span><span>COINS: <b id="mCoin">0</b></span></div>
+  </div>
+  <div class="marioCtrl"><button ontouchstart="mKeys.left=true" ontouchend="mKeys.left=false" onmousedown="mKeys.left=true" onmouseup="mKeys.left=false">◀</button><button onclick="mJump()" style="background:#ff5a2a;color:#fff">▲ JUMP 4D</button><button ontouchstart="mKeys.right=true" ontouchend="mKeys.right=false" onmousedown="mKeys.right=true" onmouseup="mKeys.right=false">▶</button></div>
+  <div style="display:flex;gap:6px;margin-top:8px"><button class="btn" style="flex:1" onclick="mStart4D()">🔄 RESTART 4D</button><button class="btn btn-white" style="flex:1" onclick="toggleDepth()">🌟 TOGGLE 4D DEPTH</button></div>
+  <p style="font-size:9px;opacity:.6;margin-top:6px">MARIO 4D: Ada bayangan 3D, depth layer, parallax background, efek cahaya! Jauh lebih keren dari 3D biasa!</p>`;
+  setTimeout(mStart4D,300);
+ } else if(name.includes('MARIO 3D')){
+  b.innerHTML=`<canvas id="marioCanvas" width="360" height="250" style="width:100%;height:250px;background:linear-gradient(180deg,#5ab9ff,#87ceeb);border-radius:14px;border:3px solid #ff5a2a"></canvas><div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px"><span>Score: <b id="mScore">0</b></span><span>Coin: <b id="mCoin">0</b></span></div><div class="marioCtrl"><button ontouchstart="mKeys.left=true" ontouchend="mKeys.left=false">◀</button><button onclick="mJump()">▲</button><button ontouchstart="mKeys.right=true" ontouchend="mKeys.right=false">▶</button></div><button class="btn" onclick="mStart()">RESTART 3D</button>`;
+  setTimeout(mStart,200);
+ } else if(name==='PROFIL USER'){
+  b.innerHTML=`<div style="text-align:center"><div class="avatar" style="margin:auto;width:70px;height:70px;font-size:30px">${userData.nama[0]}</div><h3 style="font-family:'Orbitron'">${userData.nama}</h3></div><input class="input" id="editNama" value="${userData.nama}"><input class="input" id="editAsal" value="${userData.asal}"><button class="btn" onclick="saveProfil()">SIMPAN</button>`;
+ } else if(name==='ORANG MANA'){
+  b.innerHTML=`<input class="input" id="prov" value="${userData.prov}" placeholder="Provinsi"><input class="input" id="kota" value="${userData.kota}" placeholder="Kota"><button class="btn" onclick="saveAsal()">SIMPAN ASAL</button>`;
+ } else if(name==='CUACA'){
+  b.innerHTML=`<div style="text-align:center"><div style="font-size:50px">⛅</div><h2 id="cuacaSuhu" style="font-family:'Orbitron'">--°C</h2><p id="cuacaLokasi">Loading...</p></div><button class="btn" onclick="initCuaca()">REFRESH</button>`;
+  setTimeout(initCuaca,500);
+ } else if(name==='BATERAI AMAN'){
+  b.innerHTML=`<div style="text-align:center"><div style="font-size:50px">🔋</div><h2 id="batSuhu" style="font-family:'Orbitron'">--%</h2><div style="width:100%;height:10px;background:#ffffff22;border-radius:10px"><div id="batBar" style="height:100%;width:0%;background:linear-gradient(90deg,#2aff8a,#2a9a5a);border-radius:10px"></div></div></div><button class="btn" style="background:#2aff8a;color:#000" onclick="aktifkanHemat()">MODE HEMAT</button>`;
+  setTimeout(initBattery,300);
+ } else {
+  b.innerHTML=`<input class="input" placeholder="Input ${name}"><button class="btn" onclick="run('Proses ${name}...','✅ Berhasil')">JALANKAN</button>`;
+ }
+ document.getElementById('popup').classList.add('show');
+}
+function closePop(){document.getElementById('popup').classList.remove('show');if(mLoop)cancelAnimationFrame(mLoop);if(m4DLoop)cancelAnimationFrame(m4DLoop)}
+function run(l,t){const r=document.getElementById('pResult');r.style.display='block';r.innerText='⏳ '+l;setTimeout(()=>r.innerText=t,1000)}
+function saveProfil(){let n=document.getElementById('editNama').value;let a=document.getElementById('editAsal').value;userData.nama=n;userData.asal=a;document.getElementById('pNameDisplay').innerText=n;document.getElementById('pAsalDisplay').innerText='📍 '+a;document.getElementById('avLetter').innerText=n[0];const r=document.getElementById('pResult');r.style.display='block';r.innerText=`✅ Profil: ${n} - ${a}`;}
+function saveAsal(){let prov=document.getElementById('prov').value;let kota=document.getElementById('kota').value;userData.asal=`${kota}, ${prov}`;userData.prov=prov;userData.kota=kota;document.getElementById('pAsalDisplay').innerText='📍 '+userData.asal;const r=document.getElementById('pResult');r.style.display='block';r.innerText=`✅ Asal: ${userData.asal}`;}
+async function initBattery(){try{if('getBattery' in navigator){let bat=await navigator.getBattery();let level=Math.round(bat.level*100);document.getElementById('batNum').innerText=level+'%';document.getElementById('batTop').innerText='🔋 '+level+'%';let e1=document.getElementById('batSuhu');if(e1)e1.innerText=level+'%';let e3=document.getElementById('batBar');if(e3)e3.style.width=level+'%';}}catch{}}
+async function initCuaca(){try{if(navigator.geolocation){navigator.geolocation.getCurrentPosition(async pos=>{let lat=pos.coords.latitude;let lon=pos.coords.longitude;try{let res=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);let data=await res.json();let temp=data.current_weather.temperature;document.getElementById('cuacaNum').innerText=temp+'°';let el=document.getElementById('cuacaSuhu');if(el)el.innerText=temp+'°C';let el2=document.getElementById('cuacaLokasi');if(el2)el2.innerText=`📍 ${lat.toFixed(2)}, ${lon.toFixed(2)} • ${data.current_weather.windspeed} km/h`;}catch{}})}}catch{}
+function aktifkanHemat(){const r=document.getElementById('pResult');r.style.display='block';r.innerText='✅ MODE HEMAT AKTIF! Anti boros & anti overheat!';}
+function filterTools(){let q=document.getElementById('cari').value.toLowerCase();render(tools.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)))}
+function cat(c,el){document.querySelectorAll('.chip').forEach(ch=>ch.classList.remove('active'));el.classList.add('active');if(c==='all')render(tools);else render(tools.filter(t=>t.cat===c))}
+
+// MARIO 4D THREE.JS STYLE - Enhanced 2.5D with depth layers
+let mX=50,mY=180,mVY=0,mOnGround=true,mScore=0,mCoinsCollected=0,mKeys={left:false,right:false},mLoop=null,m4DLoop=null,mCoins=[],mDepth=true;
+function mStart4D(){
+ const canvas=document.getElementById('marioCanvas');if(!canvas)return;
+ const ctx=canvas.getContext('2d');canvas.width=360;canvas.height=380;
+ mX=60;mY=220;mVY=0;mOnGround=true;mScore=0;mCoinsCollected=0;
+ mCoins=[{x:200,y:160,z:0},{x:350,y:120,z:1},{x:500,y:140,z:0},{x:650,y:100,z:2}];
+ if(m4DLoop)cancelAnimationFrame(m4DLoop);
+ let bgOffset=0;
+ function loop4D(){
+  ctx.clearRect(0,0,360,380);
+  bgOffset+=0.5;
+  // Sky gradient 4D
+  let grad=ctx.createLinearGradient(0,0,0,380);grad.addColorStop(0,'#1a2a6c');grad.addColorStop(0.5,'#5ab9ff');grad.addColorStop(1,'#b2ebf2');ctx.fillStyle=grad;ctx.fillRect(0,0,360,380);
+  // Parallax clouds with depth
+  ctx.fillStyle='#ffffff55';for(let i=0;i<3;i++){let cx=(80+i*120+bgOffset*(0.2+i*0.2))%400-20;let cy=30+i*25;let scale=0.8+i*0.3;ctx.beginPath();ctx.arc(cx,cy,15*scale,0,Math.PI*2);ctx.arc(cx+20*scale,cy,20*scale,0,Math.PI*2);ctx.arc(cx+40*scale,cy,15*scale,0,Math.PI*2);ctx.fill();}
+  // Far hills depth
+  ctx.fillStyle='#2d6a4f88';ctx.beginPath();ctx.moveTo(0,250);for(let x=0;x<=360;x+=20){ctx.lineTo(x,250+Math.sin((x+bgOffset)*0.02)*20)}ctx.lineTo(360,380);ctx.lineTo(0,380);ctx.fill();
+  // Ground with 4D perspective
+  ctx.fillStyle='#2a8a2a';ctx.fillRect(0,280,360,100);
+  ctx.fillStyle='#1a5a1a';ctx.fillRect(0,280,360,10);
+  ctx.fillStyle='#8B4513';ctx.fillRect(0,290,360,15);
+  // Grid perspective lines for 4D effect
+  if(mDepth){ctx.strokeStyle='#ffffff15';ctx.lineWidth=1;for(let i=0;i<360;i+=40){ctx.beginPath();ctx.moveTo(i-bgOffset%40,280);ctx.lineTo(i*1.2-bgOffset%40-20,380);ctx.stroke();}}
+  // Coins with depth glow
+  mCoins.forEach((c,i)=>{
+   c.x-=3.5;if(c.x<-30){c.x=380+Math.random()*300;c.y=100+Math.random()*120;c.z=Math.floor(Math.random()*3)}
+   let size=8+c.z*3;let glow=c.z*10;
+   // Glow
+   ctx.shadowColor='#FFD700';ctx.shadowBlur=glow;ctx.fillStyle='#FFD700';ctx.beginPath();ctx.arc(c.x,c.y,size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+   ctx.fillStyle='#FFA500';ctx.font=`bold ${8+c.z*2}px Arial`;ctx.fillText('$',c.x-3,c.y+3);
+   // depth shadow
+   if(mDepth){ctx.fillStyle='#00000033';ctx.beginPath();ctx.ellipse(c.x,c.y+60,10+c.z*3,3,0,0,Math.PI*2);ctx.fill();}
+   if(Math.abs(mX-c.x)<20 && Math.abs(mY-c.y)<20){mScore+=10*(c.z+1);mCoinsCollected++;c.x=400+Math.random()*400;document.getElementById('mScore').innerText=mScore;document.getElementById('mCoin').innerText=mCoinsCollected}
+  });
+  if(mKeys.left)mX-=6;if(mKeys.right)mX+=6;mX=Math.max(10,Math.min(310,mX));
+  mVY+=1.1;mY+=mVY;if(mY>=250){mY=250;mVY=0;mOnGround=true}
+  // Mario 4D with shadow and depth
+  if(mDepth){ctx.fillStyle='#00000055';ctx.beginPath();ctx.ellipse(mX+12,295,18,5,0,0,Math.PI*2);ctx.fill();}
+  // Mario body 4D layered
+  ctx.fillStyle='#00000033';ctx.fillRect(mX+2, mY+2, 26, 28);
+  ctx.fillStyle='#FF0000';ctx.fillRect(mX, mY, 26, 18);
+  ctx.fillStyle='#0000FF';ctx.fillRect(mX+3, mY+16, 20, 10);
+  ctx.fillStyle='#FFCC99';ctx.fillRect(mX+5, mY-2, 16, 12);
+  ctx.fillStyle='#FF0000';ctx.fillRect(mX, mY-8, 26, 8);
+  ctx.fillStyle='#FFFFFF';ctx.fillRect(mX+18, mY+2, 4, 4);
+  ctx.fillStyle='#FFD700';ctx.fillRect(mX+8, mY-4, 5, 5);
+  // Highlight for 4D
+  ctx.fillStyle='#ffffff66';ctx.fillRect(mX+1, mY+1, 3, 16);
+  m4DLoop=requestAnimationFrame(loop4D);
+ }
+ loop4D();
+}
+function toggleDepth(){mDepth=!mDepth;const r=document.getElementById('pResult');r.style.display='block';r.innerText=mDepth?'✅ 4D Depth ON - Bayangan & Grid Aktif!':'❌ 4D Depth OFF - Mode Flat';}
+let mCoins3d=[];
+function mStart(){const canvas=document.getElementById('marioCanvas');if(!canvas)return;const ctx=canvas.getContext('2d');mX=50;mY=180;mVY=0;mOnGround=true;mScore=0;mCoins=[{x:200,y:140},{x:350,y:110},{x:500,y:140}];if(mLoop)cancelAnimationFrame(mLoop);function loop(){ctx.clearRect(0,0,360,250);ctx.fillStyle='#87ceeb';ctx.fillRect(0,0,360,250);ctx.fillStyle='#2a8a2a';ctx.fillRect(0,210,360,40);mCoins.forEach(c=>{c.x-=2.5;if(c.x<-20){c.x=360+Math.random()*300;c.y=80+Math.random()*100}ctx.fillStyle='#FFD700';ctx.beginPath();ctx.arc(c.x,c.y,8,0,Math.PI*2);ctx.fill();if(Math.abs(mX-c.x)<18&&Math.abs(mY-c.y)<18){mScore+=10;c.x=400+Math.random()*300;let s=document.getElementById('mScore');if(s)s.innerText=mScore}});if(mKeys.left)mX-=5;if(mKeys.right)mX+=5;mX=Math.max(10,Math.min(320,mX));mVY+=0.9;mY+=mVY;if(mY>=180){mY=180;mVY=0;mOnGround=true}ctx.fillStyle='#FF0000';ctx.fillRect(mX+2,mY+4,20,14);mLoop=requestAnimationFrame(loop)}loop()}
+function mJump(){if(mOnGround){mVY=-14;mOnGround=false}}
+render(tools);
+</script>
+</body>
+</html>
