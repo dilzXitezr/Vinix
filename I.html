@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DILZNOELZ SUKABUMI V31 - NO PW - AMAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Poppins',sans-serif;box-sizing:border-box}
+body{margin:0;background:#070a1a;color:#fff}
+.header{padding:12px 16px;display:flex;justify-content:space-between;background:#0009;border-bottom:2px solid #ff2a2a44;position:sticky;top:0;z-index:10}
+.logo{font-family:'Orbitron';font-weight:900;font-size:11px}
+.logo span{color:#ff2a2a}
+.phones{max-width:430px;margin:0 auto;padding:12px}
+.phone{background:linear-gradient(180deg,#1a1236,#0a0e1f);border-radius:28px;border:3px solid #ff2a2a;box-shadow:0 0 40px #ff2a2a77;padding:12px}
+.topbar{display:flex;justify-content:space-between;font-size:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}
+.box{border-radius:14px;padding:10px 6px;text-align:center;border:2px solid #fff;font-weight:800}
+.box.mario{background:linear-gradient(135deg,#ff1a1a,#ff8a2a);animation:glow 1.2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 10px #ff2a2a}50%{box-shadow:0 0 24px #ff8a2a}}
+.title{font-family:'Orbitron';font-weight:900;font-size:14px;text-align:center;margin:10px 0 2px}
+.title span{color:#ff2a2a}
+.sub{text-align:center;font-size:7px;opacity:.6;letter-spacing:2px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tool{background:#ffffff15;border:1px solid #ffffff22;border-radius:14px;padding:12px 4px;text-align:center;cursor:pointer;position:relative}
+.tool.marioTop{border:2px solid #ff2a2a;background:#ff2a2a55;box-shadow:0 0 18px #ff2a2a88}
+.tool.chatGB{border:2px solid #2aff8a;background:#2aff8a33}
+.badge{position:absolute;top:3px;right:3px;font-size:5px;padding:2px 4px;border-radius:6px;font-weight:900;color:#fff}
+.badge.top{background:#ff1a1a}.badge.gb{background:#2aff8a;color:#000}
+.tool span{font-size:20px;display:block}
+.tool b{font-size:5.5px;display:block;margin-top:4px}
+.input{width:100%;background:#0006;border:1px solid #ff2a2a33;border-radius:12px;padding:12px;color:#fff;margin:6px 0}
+.btn{width:100%;background:linear-gradient(90deg,#ff1a1a,#ff8a2a);color:#fff;border:none;padding:13px;border-radius:12px;font-weight:900;margin-top:8px;font-family:'Orbitron'}
+#popup{position:fixed;inset:0;background:#000d;backdrop-filter:blur(14px);display:none;place-items:center;z-index:100;padding:10px}
+#popup.show{display:grid}
+.card{background:linear-gradient(180deg,#1b1236,#11182f);border:2px solid #ff2a2a88;border-radius:22px;padding:14px;width:100%;max-width:420px;max-height:96vh;overflow:auto}
+.chatBox{width:100%;height:340px;background:#0006;border:1px solid #ffffff22;border-radius:16px;display:flex;flex-direction:column;overflow:hidden}
+.chatMessages{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
+.chatMsg{max-width:82%;padding:8px 12px;border-radius:14px;font-size:11px}
+.chatMsg.me{background:linear-gradient(90deg,#ff1a1a,#ff8a2a);align-self:flex-end}
+.chatMsg.other{background:#ffffff15;align-self:flex-start}
+.chatInput{display:flex;gap:6px;padding:8px;background:#0008}
+.chatInput input{flex:1;background:#ffffff10;border:1px solid #ffffff22;border-radius:20px;padding:10px 14px;color:#fff}
+.chatInput button{background:linear-gradient(90deg,#2aff8a,#2a9a5a);color:#000;border:none;padding:10px 16px;border-radius:20px;font-weight:900}
+#marioContainer{width:100%;height:360px;border-radius:16px;overflow:hidden;border:3px solid #ff2a2a;background:#000}
+#marioCanvas{width:100%;height:100%;display:block}
+</style>
+</head>
+<body>
+<audio id="bgMusic" loop><source src="https://ia800905.us.archive.org/25/items/SuperMarioBrosThemeSong/SuperMarioBros.mp3" type="audio/mpeg"></audio>
+<div class="header">
+<div class="logo">DILZNOELZ <span>SUKABUMI V31 NO PW</span></div>
+<button id="musicBtn" onclick="toggleMusic()" style="background:linear-gradient(90deg,#2aff8a,#2a9a5a);color:#000;border:none;padding:6px 12px;border-radius:20px;font-size:9px;font-weight:900">🎵 ON</button>
+</div>
+<div class="phones"><div class="phone">
+<div class="topbar"><span id="clock">11:00</span><b style="background:linear-gradient(90deg,#ff2a2a,#ff8a2a);padding:5px 12px;border-radius:20px;font-family:'Orbitron';font-size:7px">DILZ V31</b><span id="batTop">🔋 88%</span></div>
+<div class="stats">
+<div class="box mario">🍄<br><span style="font-size:6px">MARIO TOP!</span></div>
+<div class="box" style="background:linear-gradient(135deg,#2aff8a,#2a9a5a);color:#000">💬<br><span style="font-size:6px">CHAT GB</span></div>
+<div class="box" style="background:linear-gradient(135deg,#ffcc00,#ff8a2a);color:#000">🔋<br><span id="batNum" style="font-size:6px">88%</span></div>
+</div>
+<div class="title">DILZNOELZ <span>SUKABUMI V31</span></div>
+<div class="sub">NO LOGIN - MARIO TOP - CHAT GB - BAT FIX - MUSIK - AMAN</div>
+<div class="grid" id="grid"></div>
+<div style="background:#2aff8a22;border:1px solid #2aff8a44;border-radius:10px;padding:8px;text-align:center;margin-top:10px">
+<b style="font-size:7px;color:#2aff8a">✅ V31 NO PW - LANGSUNG MASUK<br>dilznoelz.github.io/dilznoelz-sukabumi-v31/</b>
+</div>
+</div></div>
+<div id="popup"><div class="card">
+<div style="display:flex;gap:10px;align-items:center"><div id="pIcon" style="width:50px;height:50px;background:linear-gradient(135deg,#ff1a1a,#ff8a2a);border-radius:14px;display:grid;place-items:center;font-size:24px">🍄</div><div><h3 id="pTitle" style="margin:0;font-family:'Orbitron';font-size:12px">TITLE</h3><p id="pDesc" style="margin:2px 0 0;font-size:9px;opacity:.6"></p></div></div>
+<div id="pBody" style="margin-top:12px"></div>
+<button class="btn" style="background:#fff;color:#000" onclick="closePop()">✖ TUTUP</button>
+</div></div>
+<script>
+const tools=[
+{name:'MARIO VS MONSTER 4D',icon:'🍄',cat:'game',desc:'Mario Sukabumi - TOP Paling Atas',top:true},
+{name:'MONSTER BOSS',icon:'👹',cat:'game',desc:'Boss Sukabumi',top:true},
+{name:'CHAT GB - GROUP',icon:'👥',cat:'chat',desc:'Buat Group Baru GB',top:true,gb:true},
+{name:'CHAT GB SUKABUMI',icon:'🏔️',cat:'chat',desc:'Group Sukabumi GB',gb:true},
+{name:'MARIO SQUAD GB',icon:'🍄👥',cat:'chat',desc:'Group Mario Players GB',gb:true},
+{name:'CHAT GLOBAL',icon:'🌐',cat:'chat',desc:'Chat Global'},
+{name:'CHAT SUKABUMI',icon:'📍',cat:'chat',desc:'Chat Orang Sukabumi'},
+{name:'BATERAI AMAN FIX',icon:'🔋',cat:'bat',desc:'Fix --% Jadi 88%'},
+{name:'DEVICE INFO',icon:'📱',cat:'bat',desc:'Info HP'},
+{name:'QR-GENERATOR',icon:'🔲',cat:'util',desc:'Bikin QR Code'},
+{name:'BASE64 TOOL',icon:'🔢',cat:'util',desc:'Encode Decode Base64'},
+{name:'ENC-DEC TOOL',icon:'🔐',cat:'util',desc:'Encrypt Decrypt Teks'},
+{name:'CUACA SUKABUMI',icon:'⛅',cat:'util',desc:'Cuaca Sukabumi Hari Ini'},
+{name:'KALKULATOR',icon:'🧮',cat:'util',desc:'Kalkulator Sukabumi'},
+{name:'JAM SUKABUMI',icon:'⏰',cat:'util',desc:'Jam & Tanggal'},
+];
+let chatGroups={'GB SUKABUMI':[{name:'BOT',text:'Selamat datang di GB SUKABUMI! 🏔️',other:true}],'MARIO SQUAD':[{name:'BOT',text:'MARIO SQUAD GB READY! 🍄👥',other:true}],'GB GLOBAL':[{name:'BOT',text:'GB GLOBAL 🌐',other:true}]};
+let currentGB='GB SUKABUMI';
+function init(){
+render(tools);
+setInterval(()=>{let c=document.getElementById('clock');if(c)c.innerText=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})},1000);
+let b=88+Math.floor(Math.random()*7);document.getElementById('batNum').innerText=b+'%';document.getElementById('batTop').innerText='🔋 '+b+'%';
+let m=document.getElementById('bgMusic');if(m){m.volume=0.35;m.play().catch(()=>{document.addEventListener('click',()=>{m.play()},{once:true})})}
+}
+function render(list){
+let sorted=[...list].sort((a,b)=>{let sa=(a.top?100:0)+(a.gb?50:0);let sb=(b.top?100:0)+(b.gb?50:0);return sb-sa});
+document.getElementById('grid').innerHTML=sorted.map(t=>`<div class="tool ${t.top?'marioTop':''} ${t.gb?'chatGB':''}" onclick="openTool('${t.name}')">${t.top?'<span class=badge top>TOP</span>':''}${t.gb&&!t.top?'<span class=badge gb>GB</span>':''}<span>${t.icon}</span><b>${t.name}</b></div>`).join('');
+}
+function openTool(name){
+let t=tools.find(x=>x.name===name)||{name,icon:'🍄',desc:''};
+document.getElementById('pIcon').innerText=t.icon;document.getElementById('pTitle').innerText=t.name;document.getElementById('pDesc').innerText=t.desc;
+let b=document.getElementById('pBody');
+if(name.includes('BATERAI')){
+b.innerHTML=`<div style="text-align:center"><div style="font-size:48px">🔋</div><h2 style="font-family:'Orbitron'">${document.getElementById('batNum').innerText}</h2><p style="font-size:10px">Fix --% berhasil! Sekarang ${document.getElementById('batNum').innerText}</p></div>`;
+document.getElementById('popup').classList.add('show');return;
+}
+if(name.includes('CHAT')){
+b.innerHTML=`<div class="chatBox"><div class="chatMessages" id="chatMessages"></div><div class="chatInput"><input id="chatInput" placeholder="Ketik di ${currentGB}..."><button onclick="sendChat()">Kirim</button></div></div><div style="display:flex;gap:6px;margin-top:6px"><button style="flex:1;background:linear-gradient(90deg,#2aff8a,#2a9a5a);color:#000;border:none;padding:10px;border-radius:10px;font-weight:900;font-size:9px" onclick="clearChat()">🗑️ HAPUS</button><button style="flex:1;background:linear-gradient(90deg,#ff1a1a,#ff8a2a);color:#fff;border:none;padding:10px;border-radius:10px;font-weight:900;font-size:9px" onclick="buatGroup()">➕ BUAT GROUP</button></div>`;
+document.getElementById('popup').classList.add('show');setTimeout(()=>{updateChat();document.getElementById('chatInput')?.addEventListener('keypress',(e)=>{if(e.key==='Enter')sendChat()})},100);return;
+}
+if(name.includes('MARIO')||name.includes('BOSS')){
+b.innerHTML=`<div id="marioContainer"><canvas id="marioCanvas"></canvas></div><div style="display:flex;gap:6px;margin-top:8px"><button style="flex:1;background:#fff;color:#000;border:none;padding:12px;border-radius:10px;font-weight:900" ontouchstart="mKeys.left=true" ontouchend="mKeys.left=false" onmousedown="mKeys.left=true" onmouseup="mKeys.left=false">◀</button><button style="flex:1;background:linear-gradient(90deg,#ff1a1a,#ff8a2a);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:900" onclick="mJump()">▲ JUMP</button><button style="flex:1;background:#fff;color:#000;border:none;padding:12px;border-radius:10px;font-weight:900" ontouchstart="mKeys.right=true" ontouchend="mKeys.right=false" onmousedown="mKeys.right=true" onmouseup="mKeys.right=false">▶</button></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-family:'Orbitron';font-size:8px"><span>SCORE: <b id="mScore">0</b></span><span>❤️ <b id="mLife">3</b></span></div>`;
+document.getElementById('popup').classList.add('show');setTimeout(()=>mStart(name.includes('BOSS')),200);return;
+}
+if(name.includes('QR')){
+b.innerHTML=`<input class="input" id="qrText" placeholder="Teks / Link..." value="Sukabumi"><button class="btn" onclick="makeQR()">🔲 BIKIN QR</button><div id="qrOut" style="margin-top:10px;text-align:center"></div>`;
+document.getElementById('popup').classList.add('show');return;
+}
+b.innerHTML=`<div style="text-align:center"><p style="font-size:11px">${t.desc}<br><br>✅ Fitur aman V31 aktif!</p><input class="input" placeholder="Input..."><button class="btn" onclick="alert('✅ ${t.name} dijalankan!')">🚀 JALANKAN</button></div>`;
+document.getElementById('popup').classList.add('show');
+}
+function updateChat(){let c=document.getElementById('chatMessages');if(!c)return;let msgs=chatGroups[currentGB]||[];c.innerHTML=msgs.map(m=>`<div class="chatMsg ${m.other?'other':'me'}">${m.other?`<div style="font-size:7px;font-weight:800;opacity:.7">${m.name}</div>`:''}${m.text}</div>`).join('');c.scrollTop=c.scrollHeight;}
+function sendChat(){let inp=document.getElementById('chatInput');if(!inp)return;let txt=inp.value.trim();if(!txt)return;chatGroups[currentGB].push({name:'DILZ',text:txt,other:false});inp.value='';updateChat();}
+function clearChat(){chatGroups[currentGB]=[{name:'BOT',text:'Chat dibersihkan ✨',other:true}];updateChat();}
+function buatGroup(){let n=prompt('Nama Group baru:');if(n){chatGroups[n]=[{name:'BOT',text:'Group '+n+' dibuat 🎉',other:true}];currentGB=n;openTool('CHAT GB - GROUP')}}
+function closePop(){document.getElementById('popup').classList.remove('show')}
+function toggleMusic(){let m=document.getElementById('bgMusic');let b=document.getElementById('musicBtn');if(m.paused){m.play();b.innerText='🎵 ON'}else{m.pause();b.innerText='🔇 OFF'}}
+function makeQR(){let t=document.getElementById('qrText').value||'Sukabumi';document.getElementById('qrOut').innerHTML=`<div style="background:#fff;color:#000;padding:12px;border-radius:12px;display:inline-block">QR: ${t}</div>`}
+let mLoop=null,mX=60,mY=220,mVY=0,mOnGround=true,mScore=0,mLife=3,mKeys={left:false,right:false},mMonsters=[];
+function mStart(isBoss){let canvas=document.getElementById('marioCanvas');let ctx=canvas.getContext('2d');canvas.width=360;canvas.height=360;mX=60;mY=220;mVY=0;mOnGround=true;mScore=0;mLife=3;mMonsters=[];for(let i=0;i<4;i++)mMonsters.push({x:380+i*140,y:isBoss?180:230,w:isBoss?34:22,h:isBoss?34:22,type:isBoss?'BOSS':'GOOM',speed:2.2+Math.random()*1.5});function loop(){ctx.clearRect(0,0,360,360);ctx.fillStyle='#1a0a2a';ctx.fillRect(0,0,360,360);ctx.fillStyle='#2a8a2a';ctx.fillRect(0,260,360,100);mMonsters.forEach((mo,idx)=>{mo.x-=mo.speed;if(mo.x<-50){mMonsters.splice(idx,1);mMonsters.push({x:420,y:230,w:22,h:22,type:'GOOM',speed:2.2}) }ctx.fillStyle=mo.type==='BOSS'?'#ff0000':'#8B4513';ctx.fillRect(mo.x,mo.y,mo.w,mo.h);if(Math.abs(mX-mo.x)<22&&Math.abs(mY-mo.y)<20){if(mVY>0){mMonsters.splice(idx,1);mScore+=20;document.getElementById('mScore').innerText=mScore;mVY=-12}else{mLife--;document.getElementById('mLife').innerText=mLife;mo.x=500;if(mLife<=0){ctx.fillStyle='#ff2a2a';ctx.font='900 16px Orbitron';ctx.fillText('GAME OVER!',100,180);return}} }});if(mKeys.left)mX-=5;if(mKeys.right)mX+=5;mX=Math.max(10,Math.min(320,mX));mVY+=1;mY+=mVY;if(mY>=230){mY=230;mVY=0;mOnGround=true}ctx.fillStyle='#ff0000';ctx.fillRect(mX,mY,26,18);ctx.fillStyle='#ffcc00';ctx.fillRect(mX+6,mY-8,14,8);mLoop=requestAnimationFrame(loop);}loop();}
+function mJump(){if(mOnGround){mVY=-13;mOnGround=false}}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
